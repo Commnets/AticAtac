@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<Forms>
+	<!-- Decoration elements -->
+	<Form id="100" name="doorFrames" file=".\forms\07.png" width="329" height="329" 
+            fSpacing="1" fMargin="1" fWidth="81" fHeight="81" aColor="255" nFrames="16"/>
+	<Form id="1001" name="doorBorders" file=".\forms\08A.png" width="165" height="165" 
+            fSpacing="1" fMargin="1" fWidth="81" fHeight="81" aColor="255" nFrames="4"/>
+	<Form id="1002" name="doors" file=".\forms\DOORS.png" width="493" height="329" 
+            fSpacing="1" fMargin="1" fWidth="81" fHeight="81" aColor="255" nFrames="24"/>
+	<Form id="101" name="ACG" file=".\forms\ACG 03.png" width="217" height="55" 
+            fSpacing="1" fMargin="1" fWidth="53" fHeight="53" aColor="255" nFrames="4"/>
+	<Form id="102" name="amulets" file=".\forms\AMULET.png" width="67" height="67" 
+            fSpacing="1" fMargin="1" fWidth="32" fHeight="32" aColor="255" nFrames="4"/>
+	<Form id="103" name="armour" file=".\forms\ARMOUR.png" width="535" height="90" 
+            fSpacing="1" fMargin="1" fWidth="88" fHeight="88" aColor="255" nFrames="6"/>
+	<Form id="104" name="barrel" file=".\forms\BARREL.png" width="429" height="108" 
+            fSpacing="1" fMargin="1" fWidth="106" fHeight="106" aColor="255" nFrames="4"/>
+	<Form id="1041" name="barrelBorder" file=".\forms\BARREL 02.png" width="429" height="108" 
+            fSpacing="1" fMargin="1" fWidth="106" fHeight="106" aColor="255" nFrames="4"/>
+	<Form id="105" name="barrels" file=".\forms\BARRELS.png" width="191" height="76" 
+            fSpacing="1" fMargin="1" fWidth="94" fHeight="74" aColor="255" nFrames="2"/>
+	<Form id="106" name="case" file=".\forms\CASE.png" width="429" height="108" 
+            fSpacing="1" fMargin="1" fWidth="106" fHeight="106" aColor="255" nFrames="4"/>
+	<Form id="1061" name="caseBorder" file=".\forms\CASE 02.png" width="429" height="108" 
+            fSpacing="1" fMargin="1" fWidth="106" fHeight="106" aColor="255" nFrames="4"/>
+	<Form id="107" name="chicken" file=".\forms\CHICKEN.png" width="249" height="88" 
+            fSpacing="1" fMargin="1" fWidth="123" fHeight="86" aColor="255" nFrames="2"/>
+	<Form id="108" name="clock" file=".\forms\CLOCK.png" width="429" height="108" 
+            fSpacing="1" fMargin="1" fWidth="106" fHeight="106" aColor="255" nFrames="4"/>
+	<Form id="1081" name="clockBorder" file=".\forms\CLOCK 02.png" width="429" height="108" 
+            fSpacing="1" fMargin="1" fWidth="106" fHeight="106" aColor="255" nFrames="4"/>
+	<Form id="1082" name="clockDoor" file=".\forms\CLOCK 03.png" width="145" height="37" 
+            fSpacing="1" fMargin="1" fWidth="35" fHeight="35" aColor="255" nFrames="4"/>
+	<Form id="109" name="table" file=".\forms\TABLE.png" width="89" height="61" 
+            fSpacing="1" fMargin="1" fWidth="87" fHeight="59" aColor="255" nFrames="1"/>
+	<Form id="110" name="trophy" file=".\forms\TROPHY.png" width="217" height="109" 
+            fSpacing="1" fMargin="1" fWidth="53" fHeight="53" aColor="255" nFrames="8"/>
+	<Form id="1110" name="trophydark" file=".\forms\TROPHYDARK.png" width="217" height="109" 
+            fSpacing="1" fMargin="1" fWidth="53" fHeight="53" aColor="255" nFrames="8"/>
+	<Form id="111" name="grave" file=".\forms\GRAVE.png" width="56" height="63" 
+            fSpacing="1" fMargin="1" fWidth="54" fHeight="61" aColor="255" nFrames="1"/>
+	<Form id="112" name="pics" file=".\forms\PICS.png" width="329" height="329" 
+            fSpacing="1" fMargin="1" fWidth="81" fHeight="81" aColor="255" nFrames="16"/>
+	<Form id="1112" name="picsdark" file=".\forms\PICSDARK.png" width="329" height="329" 
+            fSpacing="1" fMargin="1" fWidth="81" fHeight="81" aColor="255" nFrames="16"/>
+	<Form id="113" name="rug" file=".\forms\RUG.png" width="501" height="126" 
+            fSpacing="1" fMargin="1" fWidth="124" fHeight="124" aColor="255" nFrames="4"/>
+	<Form id="114" name="shields" file=".\forms\SHIELDS.png" width="217" height="217" 
+            fSpacing="1" fMargin="1" fWidth="53" fHeight="53" aColor="255" nFrames="16"/>
+	<Form id="1114" name="shieldsdark" file=".\forms\SHIELDSDARK.png" width="217" height="217" 
+            fSpacing="1" fMargin="1" fWidth="53" fHeight="53" aColor="255" nFrames="16"/>
+	<Form id="115" name="traps" file=".\forms\TD2.png" width="547" height="90" 
+            fSpacing="1" fMargin="1" fWidth="90" fHeight="88" aColor="255" nFrames="6"/>
+	<Form id="1151" name="trapsDoor" file=".\forms\TD1.png" width="56" height="57" 
+            fSpacing="1" fMargin="1" fWidth="54" fHeight="55" aColor="255" nFrames="1"/>
+	<Form id="116" name="ACGDoorRight" file=".\forms\ACG 02.png" width="99" height="193" 
+            fSpacing="1" fMargin="1" fWidth="97" fHeight="191" aColor="255" nFrames="1"/>
+	<Form id="1161" name="ACGDoorsRight" file=".\forms\ACG 01.png" width="64" height="381" 
+            fSpacing="1" fMargin="1" fWidth="62" fHeight="94" aColor="255" nFrames="4"/>
+	<Form id="117" name="ACGDoorLeft" file=".\forms\ACG 02A.png" width="99" height="193" 
+            fSpacing="1" fMargin="1" fWidth="97" fHeight="191" aColor="255" nFrames="1"/>
+	<Form id="1171" name="ACGDoorsLeft" file=".\forms\ACG 01A.png" width="64" height="381" 
+            fSpacing="1" fMargin="1" fWidth="62" fHeight="94" aColor="255" nFrames="4"/>
+	<Form id="118" name="pantry" file=".\forms\PANTRY.png" width="59" height="106" 
+            fSpacing="1" fMargin="1" fWidth="57" fHeight="104" aColor="255" nFrames="1"/>
+	<Form id="119" name="skeleton" file=".\forms\SKELETON.png" width="473" height="119" 
+            fSpacing="1" fMargin="1" fWidth="117" fHeight="117" aColor="255" nFrames="4"/>
+
+	<!-- The moving things -->
+	<Form id="200" name="dial1" file=".\forms\DIAL 01.png" width="151" height="77" 
+            fSpacing="1" fMargin="1" fWidth="29" fHeight="18" aColor="255" nFrames="20"/>
+	<Form id="201" name="dial2" file=".\forms\DIAL 02.png" width="151" height="77" 
+            fSpacing="1" fMargin="1" fWidth="29" fHeight="18" aColor="255" nFrames="20"/>
+	<Form id="202" name="dial3" file=".\forms\DIAL 03.png" width="96" height="121" 
+            fSpacing="1" fMargin="1" fWidth="18" fHeight="29" aColor="255" nFrames="20"/>
+	<Form id="203" name="dial4" file=".\forms\DIAL 04.png" width="96" height="121" 
+            fSpacing="1" fMargin="1" fWidth="18" fHeight="29" aColor="255" nFrames="20"/>
+	<Form id="205" name="dust" file=".\forms\DUST.png" width="414" height="52" 
+            fSpacing="1" fMargin="1" fWidth="58" fHeight="50" aColor="255" nFrames="7"/>
+	<Form id="206" name="eyes" file=".\forms\EYES 01.png" width="22" height="6" 
+            fSpacing="1" fMargin="1" fWidth="6" fHeight="4" aColor="255" nFrames="3"/>
+			
+	<!-- Things appearing in a room during the game
+		 someone of them that you can catch -->
+	<Form id="300" name="food" file=".\forms\FOOD.png" width="231" height="349" 
+            fSpacing="1" fMargin="1" fWidth="45" fHeight="57" aColor="255" nFrames="30"/>
+	<Form id="301" name="objects" file=".\forms\OBJECTS.png" width="236" height="205" 
+            fSpacing="1" fMargin="1" fWidth="46" fHeight="50" aColor="255" nFrames="20"/>
+
+	<!-- Monsters -->
+	<Form id="400" name="greeblies borning" file=".\forms\GREEBLIES 01.png" width="403" height="435" 
+            fSpacing="1" fMargin="1" fWidth="66" fHeight="61" aColor="255" nFrames="42"/>
+	<Form id="401" name="greeblies left" file=".\forms\GREEBLIES LFT.png" width="403" height="807" 
+            fSpacing="1" fMargin="1" fWidth="66" fHeight="61" aColor="255" nFrames="78"/>
+	<Form id="402" name="greeblies right" file=".\forms\GREEBLIES RGT.png" width="403" height="807" 
+            fSpacing="1" fMargin="1" fWidth="66" fHeight="61" aColor="255" nFrames="78"/>
+	<Form id="403" name="monsters" file=".\forms\MONSTERS.png" width="295" height="336" 
+            fSpacing="1" fMargin="1" fWidth="48" fHeight="66" aColor="255" nFrames="30"/>
+	<Form id="404" name="mushroom" file=".\forms\MUSHROOM.png" width="148" height="56" 
+            fSpacing="1" fMargin="1" fWidth="48" fHeight="54" aColor="255" nFrames="3"/>
+
+	<!-- Decoration -->
+	<Form id="500" name="instructions" file=".\forms\INSTRUCTIONS.png" width="237" height="900" 
+            fSpacing="1" fMargin="1" fWidth="235" fHeight="898" aColor="255" nFrames="1"/>
+	<Form id="501" name="scrolls" file=".\forms\SCROLLS.png" width="777" height="535" 
+            fSpacing="1" fMargin="1" fWidth="193" fHeight="533" aColor="255" nFrames="4"/>
+	<Form id="502" name="seals" file=".\forms\SEALS.png" width="265" height="137" 
+            fSpacing="1" fMargin="1" fWidth="131" fHeight="135" aColor="255" nFrames="2"/>
+	<Form id="503" name="commnets" file=".\forms\Commnets.jpg" width="500" height="169" 
+            fSpacing="0" fMargin="0" fWidth="500" fHeight="169" aColor="255" nFrames="1"/>
+	<Form id="504" name="title" file=".\forms\TITLE1.png" width="296" height="452" 
+            fSpacing="0" fMargin="0" fWidth="296" fHeight="452" aColor="255" nFrames="1"/>
+	<Form id="505" name="commnets1" file=".\forms\Commnets1.jpg" width="100" height="34" 
+            fSpacing="0" fMargin="0" fWidth="100" fHeight="34" aColor="255" nFrames="1"/>
+	<Form id="506" name="end" file=".\forms\MENU7.png" width="146" height="83" 
+            fSpacing="0" fMargin="0" fWidth="146" fHeight="83" aColor="255" nFrames="1"/>
+	<Form id="507" name="TS" file=".\forms\TS.png" width="104" height="82" 
+            fSpacing="0" fMargin="0" fWidth="104" fHeight="82" aColor="255" nFrames="1"/>
+	<Form id="508" name="Letters" file=".\forms\Letters2.png" width="512" height="512" 
+            fSpacing="0" fMargin="0" fWidth="32" fHeight="32" aColor="255" nFrames="256"/>
+	<Form id="509" name="Background" file=".\forms\background.png" width="690" height="480" 
+            fSpacing="0" fMargin="0" fWidth="690" fHeight="480" aColor="255" nFrames="1"/>
+	<Form id="510" name="Keyboard" file=".\forms\keyboard2.png" width="54" height="54" 
+            fSpacing="0" fMargin="0" fWidth="54" fHeight="54" aColor="255" nFrames="1"/>
+	<Form id="511" name="Joystick" file=".\forms\joystick2.png" width="54" height="54" 
+            fSpacing="0" fMargin="0" fWidth="54" fHeight="54" aColor="255" nFrames="1"/>
+	<Form id="512" name="Go" file=".\forms\go.png" width="54" height="54" 
+            fSpacing="0" fMargin="0" fWidth="54" fHeight="54" aColor="255" nFrames="1"/>
+	<Form id="513" name="Pause" file=".\forms\pause2.png" width="128" height="128" 
+            fSpacing="0" fMargin="0" fWidth="128" fHeight="128" aColor="255" nFrames="1"/>
+	<Form id="514" name="Level" file=".\forms\easy.png" width="54" height="54" 
+            fSpacing="0" fMargin="0" fWidth="54" fHeight="54" aColor="255" nFrames="1"/>
+	<Form id="515" name="Win" file=".\forms\win.png" width="128" height="128" 
+            fSpacing="0" fMargin="0" fWidth="128" fHeight="128" aColor="255" nFrames="1"/>
+	
+	<!-- The main character -->
+	<Form id="600" name="Character" file=".\forms\P1.png" width="369" height="661" 
+            fSpacing="1" fMargin="1" fWidth="45" fHeight="54" aColor="255" nFrames="96"/>
+	<Form id="601" name="weap1" file=".\forms\WEAP 01.png" width="847" height="95" 
+            fSpacing="1" fMargin="1" fWidth="46" fHeight="46" aColor="255" nFrames="36"/>
+	<Form id="602" name="weap2" file=".\forms\WEAP 01.png" width="847" height="95" 
+            fSpacing="1" fMargin="1" fWidth="46" fHeight="46" aColor="255" nFrames="36"/>
+	<Form id="603" name="weap3" file=".\forms\WEAP 01.png" width="847" height="95" 
+            fSpacing="1" fMargin="1" fWidth="46" fHeight="46" aColor="255" nFrames="36"/>
+	<Form id="604" name="knight" file=".\forms\Knight.png" width="45" height="54" 
+            fSpacing="0" fMargin="0" fWidth="45" fHeight="54" aColor="255" nFrames="1"/>
+	<Form id="605" name="wizard" file=".\forms\Wizard.png" width="45" height="54" 
+            fSpacing="0" fMargin="0" fWidth="45" fHeight="54" aColor="255" nFrames="1"/>
+	<Form id="606" name="servant" file=".\forms\Servant.png" width="45" height="54" 
+            fSpacing="0" fMargin="0" fWidth="45" fHeight="54" aColor="255" nFrames="1"/>
+			
+	
+</Forms>
