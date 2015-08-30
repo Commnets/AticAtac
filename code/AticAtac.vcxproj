@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C90ECB4F-A3FB-4BF2-93E6-E6D92F7ADB22}</ProjectGuid>
+    <RootNamespace>AticAtac</RootNamespace>
+    <ProjectName>AticAtac</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\exe\</OutDir>
+    <IntDir>..\..\obj\$(ProjectName)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\exe\</OutDir>
+    <IntDir>..\..\obj\$(ProjectName)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)D</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\CPPLIBS\SDL2-2.0.0\include;..\..\..\CPPLIBS\SDL2_image-2.0.0\include;..\..\..\CPPLIBS\SDL2_mixer-2.0.0\include;..\..\..\CPPLIBS\SDL2_gfx-1.0.1;..\..\projects\tinyxml;..\..\projects\tmxparser;..\..\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\lib;..\..\..\CPPLIBS\SDL2-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_image-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_mixer-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_gfx-1.0.1\Win32\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ArcadeLibD.lib;CommonlibD.lib;CommonSDLD.lib;tinyxmlD.lib;SDL2.lib;SDL2_image.lib;SDL2_mixer.lib;TmxParserD.lib;SDL2_gfx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\CPPLIBS\SDL2-2.0.0\include;..\..\..\CPPLIBS\SDL2_image-2.0.0\include;..\..\..\CPPLIBS\SDL2_mixer-2.0.0\include;..\..\..\CPPLIBS\SDL2_gfx-1.0.1;..\..\projects\tinyxml;..\..\projects\tmxparser;..\..\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\..\lib;..\..\..\CPPLIBS\SDL2-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_image-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_mixer-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_gfx-1.0.1\Win32\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Commonlib.lib;ArcadeLib.lib;CommonSDL.lib;tinyxml.lib;SDL2.lib;SDL2_image.lib;TmxParser.lib;SDL2_mixer.lib;SDL2_gfx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="BkEntities.hpp" />
+    <ClInclude Include="CtEntities.hpp" />
+    <ClInclude Include="Defs.hpp" />
+    <ClInclude Include="Entities.hpp" />
+    <ClInclude Include="EntitiesBuilder.hpp" />
+    <ClInclude Include="EtEntities.hpp" />
+    <ClInclude Include="Events.hpp" />
+    <ClInclude Include="Game.hpp" />
+    <ClInclude Include="GameImplementation.hpp" />
+    <ClInclude Include="GameStates.hpp" />
+    <ClInclude Include="General.hpp" />
+    <ClInclude Include="InputHandler.hpp" />
+    <ClInclude Include="Maps.hpp" />
+    <ClInclude Include="MapsBuilder.hpp" />
+    <ClInclude Include="Movements.hpp" />
+    <ClInclude Include="MovementsBuilder.hpp" />
+    <ClInclude Include="MtEntities.hpp" />
+    <ClInclude Include="OriginalData.hpp" />
+    <ClInclude Include="Scenes.hpp" />
+    <ClInclude Include="ScObjects.hpp" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Timer.hpp" />
+    <ClInclude Include="Worlds.hpp" />
+    <ClInclude Include="WorldsBuilder.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BkEntities.cpp" />
+    <ClCompile Include="CtEntities.cpp" />
+    <ClCompile Include="Entities.cpp" />
+    <ClCompile Include="EntitiesBuilder.cpp" />
+    <ClCompile Include="EtEntities.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameImplementation.cpp" />
+    <ClCompile Include="GameStates.cpp" />
+    <ClCompile Include="General.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Maps.cpp" />
+    <ClCompile Include="MapsBuilder.cpp" />
+    <ClCompile Include="Movements.cpp" />
+    <ClCompile Include="MovementsBuilder.cpp" />
+    <ClCompile Include="MtEntities.cpp" />
+    <ClCompile Include="OriginalData.cpp" />
+    <ClCompile Include="Scenes.cpp" />
+    <ClCompile Include="ScObjects.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Worlds.cpp" />
+    <ClCompile Include="WorldsBuilder.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="conf.xml" />
+    <Xml Include="entities.xml" />
+    <Xml Include="forms.xml" />
+    <Xml Include="maps.xml" />
+    <Xml Include="movements.xml" />
+    <Xml Include="objects.xml" />
+    <Xml Include="sounds.xml" />
+    <Xml Include="worlds.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="classes.cd" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
