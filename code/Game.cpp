@@ -233,6 +233,13 @@ void AticAtacGame::toCatch (AticAtacThingToCatch* t)
 	_carrying = ((AticAtacWorld*) _activeWorld) -> things ();
 	_things -> setThings (_carrying);
 	_somethingCaught = true;
+
+	// If after catching something
+	// the main character could exit the maze, then
+	// the exit door is open...
+	// Otherwise it is closed (just in case)
+	if (couldMainCharacterExit ()) ((AticAtacWorld*) _activeWorld) -> openExitDoor ();
+	else ((AticAtacWorld*) _activeWorld) -> closeExitDoor ();
 }
 
 // ---
@@ -243,6 +250,16 @@ void AticAtacGame::toLeaveLast ()
 	((AticAtacWorld*) _activeWorld) -> thingLeft ();
 	_carrying = ((AticAtacWorld*) _activeWorld) -> things ();
 	_things -> setThings (_carrying);
+
+	// If after leaving something
+	// the main character could still exit the maze, then
+	// the exit door would open...
+	// Otherwise it close
+	// Really this piece of code is not necessary when the 
+	// max number of thing to carry is the same of number of pieces of the exit key
+	// But just maintain it for compatibility!
+	if (couldMainCharacterExit ()) ((AticAtacWorld*) _activeWorld) -> openExitDoor ();
+	else ((AticAtacWorld*) _activeWorld) -> closeExitDoor ();
 }
 
 // ---
@@ -256,12 +273,20 @@ void AticAtacGame::toLeaveAll ()
 }
 
 // ---
+bool AticAtacGame::couldMainCharacterExit () const
+{
+	assert (_activeWorld);
+
+	return (_things -> couldMainCharacterExit ());
+}
+
+// ---
 void AticAtacGame::updatePositions ()
 {
 	// If the state is not playing or fallin...makes no sense to actualize the states..
 	if (_currentGameState -> type () != __GAMESTATEPLAYING &&
 		_currentGameState -> type () != __GAMESTATEFALLING)
-		return;
+		return; // This is the reason nothing moves unless you're playing!
 
 	// If the game is falling,
 	// Only the world is actualize (no collisions are detected...)
@@ -447,9 +472,9 @@ QGAMES::Timer* AticAtacGame::createTimer ()
 QGAMES::Screens AticAtacGame::createScreens ()
 { 
 	QGAMES::Screens r;
-	r.insert (QGAMES::Screens::value_type 
-		(__QGAMES_MAINSCREEN__, new SDLScreen (__GAMESNAME__, 
-		 QGAMES::Position (0,0), __SCREENWIDTH__, __SCREENHEIGHT__, __SCREENXPOS__, __SCREENYPOS__)));
+	QGAMES::Screen* scr = new SDLScreen (__GAMESNAME__, 
+		 QGAMES::Position (0,0), __SCREENWIDTH__, __SCREENHEIGHT__, __SCREENXPOS__, __SCREENYPOS__);
+	r.insert (QGAMES::Screens::value_type (__QGAMES_MAINSCREEN__, scr));
 	return (r); 
 }
 
@@ -471,6 +496,9 @@ QGAMES::MapBuilder* AticAtacGame::createMapBuilder ()
 void AticAtacGame::initialize ()
 {
 	QGAMES::ArcadeGame::initialize ();
+
+	// Sets the icon to the window...
+	mainScreen () -> setIcon (formBuilder () -> form (__ATICATACICONFORM__));
 
 	// Stablish the number of lives...
 	_numberOfLives = __INITIALNUMBEROFLIVES;

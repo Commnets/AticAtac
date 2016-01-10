@@ -38,6 +38,10 @@ class AticAtacCharacter : public QGAMES::Artist
 	/** To know whether the entity has or not a thing. */
 	bool hasThing (General::WhatIs t) const
 							{ return (((int) _things.size () < (int) t) ? _things [(int) t] : false); }
+	/** To know whether the entity has or not the exit key. */
+	bool hasExitKey () const
+							{ return (hasThing (General::__ACGKEY1) && 
+								hasThing (General::__ACGKEY2) && hasThing (General::__ACGKEY3)); }
 	/** To get a thing. */
 	void getThing (General::WhatIs t)
 							{ if ((int) _things.size () > (int) t) _things [(int) t] = true; }

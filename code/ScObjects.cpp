@@ -126,6 +126,28 @@ AticAtacThings::AticAtacThings ()
 }
 
 // ---
+bool AticAtacThings::couldMainCharacterExit () const
+{
+	// When the game is in debug mode the user can always exit the game...
+	// So it is not needed to have the three pars of the exit key!
+	#ifndef NDEBUG
+//	return (true);
+	#endif
+
+	// If there is no three things or more...
+	// It is not possible the three parts of main key are!
+	if (_things.size () < 3)
+		return (false);
+
+	bool result = true; int count = 0;
+	for (AticAtacWorld::ThingPositions::const_iterator i = _things.begin (); 
+			i != _things.end () && result && count < 3; i++, count++)
+		if ((*i).first != (__EXITKEYID + count))
+			result = false; // First time the piece is not in the right position, exiting is not possible!
+	return (result);
+}
+
+// ---
 void AticAtacThings::initialize ()
 {
 	QGAMES::ScoreObject::initialize ();

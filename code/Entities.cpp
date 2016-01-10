@@ -77,18 +77,25 @@ bool AticAtacCharacter::canMove (const QGAMES::Vector& d, const QGAMES::Vector& 
 			i != _doors.end () && !result; i++)
 	{
 		bool canEnter = 
+			// Whatever the "normal" type is (or it is the exit door), and it is open...
 			((*i) -> isDoorOpen () && 
 				((*i) -> whatIs () == General::WhatIs::__NORMALDOR || 
 				 (*i) -> whatIs () == General::WhatIs::__GREENDOOR ||
 				 (*i) -> whatIs () == General::WhatIs::__YELLOWDOOR ||
 				 (*i) -> whatIs () == General::WhatIs::__REDDOOR ||
-				 (*i) -> whatIs () == General::WhatIs::__WHITEDOOR)) || // Whatever the "normal" type is, and it is open...
+				 (*i) -> whatIs () == General::WhatIs::__WHITEDOOR ||
+				 (*i) -> whatIs () == General::WhatIs::__EXITDOOR)) || 
+			// It is open, is a clock and you're a wizard...
 			 ((*i) -> isDoorOpen () && _type == AticAtacCharacter::Type::__WIZARD && 
-				(*i) -> whatIs () == General::WhatIs::__CLOCKDOOR) || // It is open, is a clock and you're a wizard...
+				(*i) -> whatIs () == General::WhatIs::__CLOCKDOOR) || 
+			// similar case for a knight
 			((*i) -> isDoorOpen () && _type == AticAtacCharacter::Type::__KNIGHT && 
-				(*i) -> whatIs () == General::WhatIs::__BOOKCASEDOOR) || // similar case for a knight
+				(*i) -> whatIs () == General::WhatIs::__BOOKCASEDOOR) || 
+			// similar case for a servant...
 			((*i) -> isDoorOpen () && _type == AticAtacCharacter::Type::__SERVANT && 
-				(*i) -> whatIs () == General::WhatIs::__BARRELDOOR) || // similar case for a servant...
+				(*i) -> whatIs () == General::WhatIs::__BARRELDOOR) ||
+			// ..or if the door is closed but it can be open with any of the 
+			// elements carrying by the player!
 			(!(*i) -> isDoorOpen () && (*i) -> canDoorBeOpenedWith (_things));
 
 		QGAMES::Rectangle iZone = (*i) -> influenceZone ();
@@ -302,8 +309,8 @@ void AticAtacWeapon::setType (AticAtacWeapon::Type t)
 			break;
 
 		case AticAtacWeapon::Type::__WEAPONSERVANT:
-			_initialFrameLeft = 18; _finalFrameLeft = 25;
-			_initialFrameRight = 0; _finalFrameRight = 17;
+			_initialFrameLeft = 0; _finalFrameLeft = 7;
+			_initialFrameRight = 0; _finalFrameRight = 7;
 			break;
 
 		default:

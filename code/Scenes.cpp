@@ -162,6 +162,9 @@ void AticAtacScene::shoot (int nS)
 	AticAtacCharacter* mC = 
 		(AticAtacCharacter*) _entities [__ENTITYPLAYER];
 	e -> setPosition (mC -> position ());
+	e -> setType ((mC -> type () == AticAtacCharacter::__KNIGHT) ? AticAtacWeapon::__WEAPONKNIGHT
+		: ((mC -> type () == AticAtacCharacter::__WIZARD) ? AticAtacWeapon::__WEAPONWIZARD : AticAtacWeapon::__WEAPONSERVANT));
+	// The aspect of the weapon will depend on the type of character playing...
 
 	// Initially the weapon will follow the direction of the player
 	// unless the player is stopped. 

@@ -115,6 +115,10 @@ class AticAtacGame : public QGAMES::ArcadeGame
 	void toLeaveLast ();
 	/** To leave all things. */
 	void toLeaveAll ();
+	/** To know if the main character can or not exit.
+		It happens just when the things being carrying are the exit keys
+		and they are located in the list in the right order. */
+	bool couldMainCharacterExit () const;
 
 	virtual void updatePositions ();
 	virtual void addScoreObjects ();

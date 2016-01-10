@@ -18,6 +18,8 @@ AticAtacWorld::AticAtacWorld (const QGAMES::Scenes& s, const QGAMES::WorldProper
 	  _doorCountersSimple (), _foodCountersSimple (), _thingPositionsSimple (),
 	  _tombs (), _tombCounter (0)
 { 
+	_exitDoorIds [0] = _exitDoorIds [1] = -1;
+
 	QGAMES::Buoys lB;
 	lB.insert (QGAMES::Buoys::value_type 
 		(__TOCHANGEROOMBUOYID, new AticAtacWorld::ToChangeRoomBuoy));
@@ -187,6 +189,45 @@ void AticAtacWorld::addTomb ()
 }
 
 // ---
+void AticAtacWorld::openExitDoor ()
+{
+	assert (_exitDoorIds [0] != -1 && _exitDoorIds [1] != -1);
+
+	AticAtacWorld::DoorCounter* dC1 = (*_doorCountersSimple.find (_exitDoorIds [0])).second;
+	AticAtacWorld::DoorCounter* dC2 = (*_doorCountersSimple.find (_exitDoorIds [1])).second;
+	if (dC1 -> _openClose && dC2 -> _openClose)
+		return; // It is already open...
+
+	dC1 -> _openClose = dC1 -> _openClose = true;
+	if (dC1 -> _room == _roomNumber)
+		((AticAtacScene*) _activeScene)
+			-> actualizeDoorStatus (dC1 -> _id, dC1 -> _openClose);
+	if (dC2 -> _room == _roomNumber)
+		((AticAtacScene*) _activeScene)
+			-> actualizeDoorStatus (dC2 -> _id, dC2 -> _openClose);
+	QGAMES::Game::game () -> sound (__EXITDOOROPENSOUND) -> play (__OPENCLOSEDOORCHANNEL);
+}
+
+// ---
+void AticAtacWorld::closeExitDoor ()
+{
+
+	AticAtacWorld::DoorCounter* dC1 = (*_doorCountersSimple.find (_exitDoorIds [0])).second;
+	AticAtacWorld::DoorCounter* dC2 = (*_doorCountersSimple.find (_exitDoorIds [1])).second;
+	if (!dC1 -> _openClose && !dC2 -> _openClose)
+		return; // It is already close...
+
+	dC1 -> _openClose = dC1 -> _openClose = false;
+	if (dC1 -> _room == _roomNumber)
+		((AticAtacScene*) _activeScene)
+			-> actualizeDoorStatus (dC1 -> _id, dC1 -> _openClose);
+	if (dC2 -> _room == _roomNumber)
+		((AticAtacScene*) _activeScene)
+			-> actualizeDoorStatus (dC2 -> _id, dC2 -> _openClose);
+	QGAMES::Game::game () -> sound (__EXITDOORCLOSESOUND) -> play (__OPENCLOSEDOORCHANNEL);
+}
+
+// ---
 void AticAtacWorld::shoot (int nS)
 {
 	assert (_activeScene);
@@ -300,7 +341,8 @@ void AticAtacWorld::initializeThings ()
 			obj._whatIs == General::WhatIs::__WHITEDOOR ||
 			obj._whatIs == General::WhatIs::__BOOKCASEDOOR ||
 			obj._whatIs == General::WhatIs::__BARRELDOOR ||
-			obj._whatIs == General::WhatIs::__CLOCKDOOR) 
+			obj._whatIs == General::WhatIs::__CLOCKDOOR ||
+			obj._whatIs == General::WhatIs::__EXITDOOR) 
 		{
 			AticAtacWorld::DoorCounter* dC = 
 				new AticAtacWorld::DoorCounter;
@@ -308,20 +350,37 @@ void AticAtacWorld::initializeThings ()
 			dC -> _room = obj._inRoom;
 			dC -> _canOpenClose = // Only the door type normal, trap, or clock can open / close automatically...
 				(obj._whatIs == General::__NORMALDOR || 
-				 obj._whatIs == General::__TRAPDOOR) ? true : false;
+				 obj._whatIs == General::__TRAPDOOR ||
+				 obj._whatIs == General::__CLOCKDOOR) ? true : false;
 			dC -> _openClose = false; // By default the doors are all closed...
-			dC -> _timer = obj._time;
+			dC -> _timer = obj._time; // This parameter defines the time the door opens and close...
 			dC -> _counter = 0;
 
 			// If the doors are special ones...
-			// That is: Clock door, barrel door, or bookcase door,
+			// That is: Barrel door, or bookcase door,
 			// They are always open...
 			// The user will be able to entre one or other depending 
 			// the aspect he has...
+			// Let's notice that the clock door is the only
+			// special door that can be open and closed an it 
+			// remains closed at the beginning of the game...
 			if (obj._whatIs == General::__BOOKCASEDOOR ||
-				obj._whatIs == General::__BARRELDOOR ||
-				obj._whatIs == General::__CLOCKDOOR)
+				obj._whatIs == General::__BARRELDOOR)
 				dC -> _openClose = true;
+
+			// The id's of the exit doors are kept...
+			// This is needed o locate later quicker the exit doors
+			// once the main character has the three parts of the exit key...
+			if (obj._whatIs == General::__EXITDOOR)
+				if (_exitDoorIds [0] == -1) _exitDoorIds [0] = dC -> _id;
+				else if (_exitDoorIds [1] == -1) _exitDoorIds [1] = dC -> _id;
+
+			// This piece of code appears only under debug mode
+			// to permanetly open the exit door and simplify the debugging of the game
+			#ifndef NDEBUG
+//			if (obj._whatIs == General::__EXITDOOR)
+//				dC -> _openClose = true;
+			#endif
 
 			addDoorCounter (dC);
 		}
@@ -596,6 +655,7 @@ void AticAtacWorld::clearThings ()
 	_thingPositions.clear ();
 	_thingPositionsSimple.clear ();
 	_tombs.clear (); _tombCounter = 0;
+	_exitDoorIds [0]= _exitDoorIds [1] = -1;
 }
 
 // ---

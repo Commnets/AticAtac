@@ -950,7 +950,8 @@ void General::readRoomObjects ()
 			OriginalData::backgroundElements [i][0] != __ORIGINALCAVEDOOR &&
 			OriginalData::backgroundElements [i][0] != __ORIGINALBIGDOORFRAME &&
 			OriginalData::backgroundElements [i][0] != __ORIGINALSHUTTRAPDOOR &&
-			OriginalData::backgroundElements [i][0] != __ORIGINALOPENTRAPEDOOR)
+			OriginalData::backgroundElements [i][0] != __ORIGINALOPENTRAPEDOOR &&
+			OriginalData::backgroundElements [i][0] != __ORIGINALCLOCK)
 			obj._time = -1; // Not open or close automatically...
 
 		// What it is...
@@ -995,6 +996,12 @@ void General::readRoomObjects ()
 		// ..or a table?
 		if (OriginalData::backgroundElements [i][0] == __ORIGINALTABLE)
 			obj._whatIs = General::WhatIs::__TABLE;
+		// ..or the barrels?
+		if (OriginalData::backgroundElements [i][0] == __ORIGINALBARRELS)
+			obj._whatIs = General::WhatIs::__BARRELS;
+		// ..or the skeleton?
+		if (OriginalData::backgroundElements [i][0] == __ORIGINALSKELETON)
+			obj._whatIs = General::WhatIs::__SKELETON;
 
 		// To know whether it is connected or not...
 		// The object is connected to other when it is not a door
@@ -1037,7 +1044,9 @@ void General::readRoomObjects ()
 
 		// When the object is a table (or similar), it blocks the
 		// movement of the player in the room...
-		if (obj._whatIs == General::WhatIs::__TABLE)
+		if (obj._whatIs == General::WhatIs::__TABLE ||
+			obj._whatIs == General::WhatIs::__BARRELS ||
+			obj._whatIs == General::WhatIs::__SKELETON)
 			obj._blockMovement = true;
 
 		// ...and insert the object in the definition of objects...

@@ -32,6 +32,11 @@ class AticAtacMap : public QGAMES::ObjectMap
 	virtual void drawOn (QGAMES::Screen* s, 
 		const QGAMES::Position& p = QGAMES::Position::_noPoint);
 
+	/** The entities are ordered from the beginning.
+		It is not necessary to order at all. */
+	virtual QGAMES::Entities orderEntitiesToDraw (const QGAMES::Entities& e)
+							{ return (e); }
+
 	private:
 	/** The number of the room the player is now in.
 		Initially this map is 0. */

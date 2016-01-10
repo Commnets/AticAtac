@@ -111,6 +111,8 @@ QGAMES::Rectangle AticAtacMonster::collisionZone () const
 	QGAMES::Rectangle z = QGAMES::Artist::collisionZone ();
 	QGAMES::Vector d = z.pos2 () - z.pos1 ();
 	return (QGAMES::Rectangle (z.pos1 () + (0.25 * d), z.pos2 () - (0.25 * d)));
+	// Something simply 50% of the total available zone...
+	// Let's say it referes the heart of monster's visible zone!
 }
 
 // --- 
@@ -122,7 +124,7 @@ void AticAtacMonster::initialize ()
 	// The aspect can't be null (but it should be at this point)
 
 	_counter = 0;
-	_counterChanges = rand () % 5; // 5 max cycles...
+	_counterChanges = rand () % 5; // 5 max cycles to appear!
 	_status = 
 		AticAtacMonster::Status::__NONE;
 	setCurrentMovement (__MININT__); // No movement when appearing...

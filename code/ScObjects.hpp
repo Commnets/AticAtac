@@ -118,6 +118,11 @@ class AticAtacThings : public QGAMES::ScoreObject
 	const AticAtacWorld::ThingPositions& things () const
 							{ return (_things); }
 
+	/** To know whether the main character could exit the game.
+		This happens when the three parts of the main key exist
+		and the are in the right order. */
+	bool couldMainCharacterExit () const;
+
 	/** To initialize the things. */
 	virtual void initialize ();
 	/** To draw the things.

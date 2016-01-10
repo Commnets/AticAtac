@@ -110,6 +110,13 @@ class AticAtacWorld : public QGAMES::World
 		Receive the position of the tomb. */
 	void addTomb ();
 
+	/** To open the exit door.
+		This method is called normally when the exit keys are carried by the
+		main character. */
+	void openExitDoor ();
+	/** Same but to close. */
+	void closeExitDoor ();
+
 	/** To shoot. */
 	void shoot (int nS);
 	/** Stop shooting. */
@@ -221,6 +228,8 @@ class AticAtacWorld : public QGAMES::World
 	ThingPositions _tombs;
 	/** A counter for the tombs; */
 	int _tombCounter;
+	/** The door id of the exi doors. */
+	int _exitDoorIds [2];
 };
 
 #endif

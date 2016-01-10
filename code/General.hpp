@@ -59,7 +59,9 @@ class General
 		__DIAMOND = 37,
 		__BAGOFMONEY = 38,
 		__SKULL = 39,
-		__TABLE = 40
+		__TABLE = 40,
+		__BARRELS = 41,
+		__SKELETON = 42
 	} WhatIs;
 
 	/** Enum to define where the form is located. */

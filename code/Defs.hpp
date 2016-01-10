@@ -183,6 +183,7 @@
 #define __APPEARINGMONSTERNUMBERASPECTS		11
 #define __APPEARINGMONSTERINITIALASPECT		12
 #define __APPEARINGMONSTERFINALASPECT		17
+#define __WEAPONFORMBASE__					601
 #define __WEAPON1FORM						601
 #define __WEAPON2FORM						602
 #define __WEAPON3FORM						603
@@ -193,6 +194,7 @@
 #define __GOFORM							512
 #define __LEVELFORM							514
 #define __WINFORM							515
+#define __ATICATACICONFORM__				516
 
 // The number of the special things...
 #define __GREENKEYID						(__NUMBEROFTHINGS - 7)
@@ -238,6 +240,8 @@
 #define __FIRESOUND							115
 #define __WEAPONKILLSOMETHING				101
 #define __PLAYERFALLING						113
+#define __EXITDOOROPENSOUND					140
+#define __EXITDOORCLOSESOUND				141
 
 // The different channels
 #define __GENERICMUSICCHANNELSOUND			1
