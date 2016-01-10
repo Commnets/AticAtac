@@ -140,8 +140,8 @@
             fSpacing="1" fMargin="1" fWidth="46" fHeight="46" aColor="255" nFrames="36"/>
 	<Form id="602" name="weap2" file=".\forms\WEAP 01.png" width="847" height="95" 
             fSpacing="1" fMargin="1" fWidth="46" fHeight="46" aColor="255" nFrames="36"/>
-	<Form id="603" name="weap3" file=".\forms\WEAP 01.png" width="847" height="95" 
-            fSpacing="1" fMargin="1" fWidth="46" fHeight="46" aColor="255" nFrames="36"/>
+	<Form id="603" name="weap3" file=".\forms\WEAP 02.png" width="377" height="48" 
+            fSpacing="1" fMargin="1" fWidth="46" fHeight="46" aColor="255" nFrames="8"/>
 	<Form id="604" name="knight" file=".\forms\Knight.png" width="45" height="54" 
             fSpacing="0" fMargin="0" fWidth="45" fHeight="54" aColor="255" nFrames="1"/>
 	<Form id="605" name="wizard" file=".\forms\Wizard.png" width="45" height="54" 
@@ -149,5 +149,8 @@
 	<Form id="606" name="servant" file=".\forms\Servant.png" width="45" height="54" 
             fSpacing="0" fMargin="0" fWidth="45" fHeight="54" aColor="255" nFrames="1"/>
 			
+	<!-- The icon of the game -->
+	<Form id="516" name="aticatacico" file=".\forms\Knight.png" width="45" height="54" 
+            fSpacing="0" fMargin="0" fWidth="45" fHeight="54" aColor="255" nFrames="1"/>
 	
 </Forms>

@@ -40,4 +40,6 @@
 	<Sound id="137" type="1" loop="-1" file=".\sounds\TITLE SW.wav"/>
 	<Sound id="138" type="1" loop="-1" file=".\sounds\WALK 01.wav"/>
 	<Sound id="139" type="1" loop="-1" file=".\sounds\WALK.wav"/>
+	<Sound id="140" type="1" loop="-1" file=".\sounds\OPENEXITDOOR.wav"/>
+	<Sound id="141" type="1" loop="-1" file=".\sounds\CLOSEEXITDOOR.wav"/>
 </Sounds>
