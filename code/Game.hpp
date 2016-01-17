@@ -107,7 +107,7 @@ class AticAtacGame : public QGAMES::ArcadeGame
 	void noShoot ();
 
 	/** To know the things caught. */
-	const AticAtacWorld::ThingPositions& thingsCaught () const
+	const AticAtacWorld::ThingPositionsList& thingsCaught () const
 							{ return (_carrying); }
 	/** To get something. */
 	void toCatch (AticAtacThingToCatch* t);
@@ -182,7 +182,7 @@ class AticAtacGame : public QGAMES::ArcadeGame
 	/** The number of lives. */
 	int _numberOfLives;
 	/** The things being carrying. */
-	AticAtacWorld::ThingPositions _carrying;
+	AticAtacWorld::ThingPositionsList _carrying;
 	/** The type of the player. */
 	AticAtacCharacter::Type _playerType;
 	/** Number of weapons are flying. */

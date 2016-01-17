@@ -41,6 +41,10 @@ class AticAtacFood : public QGAMES::Artist
 		Their aspects and positions will change accorging to the room the player is in. */
 	void setVisible (bool v)
 							{ _isVisible = v; }
+	
+	/** The collision zone is the real core of the food.
+		It is a little bit smaller than the standard collision zone. */
+	virtual QGAMES::Rectangle collisionZone () const;
 
 	/** The position is updated, moving between the initial and the final frame. */
 	virtual void updatePositions ();

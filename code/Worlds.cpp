@@ -14,6 +14,7 @@ AticAtacWorld::AticAtacWorld (const QGAMES::Scenes& s, const QGAMES::WorldProper
 	: QGAMES::World (__ATICATACWORLD, s, p),
 	  _roomNumber (0),
 	  _mainCharacter (NULL),
+	  _carrying (), _carryingList (),
 	  _doorCounters (), _foodCounters (), _thingPositions (),
 	  _doorCountersSimple (), _foodCountersSimple (), _thingPositionsSimple (),
 	  _tombs (), _tombCounter (0)
@@ -105,8 +106,9 @@ void AticAtacWorld::thingCaught (AticAtacThingToCatch* t)
 	// Double check if we have already
 	// The max number of things allowed..
 	if (_carrying.size () >= __MAXNUMBEROFCARRYTHINGS)
-		return; // It is...no more things are allowed...so it returns
+		thingLeft (); // It is...no more things are allowed...so it left first the last
 	// Before getting another one, one has to be left
+	// This are got one by one, and left one by one...
 
 	// The main character has to have the element...
 	_mainCharacter -> getThing (t -> whatIs ());
@@ -115,6 +117,7 @@ void AticAtacWorld::thingCaught (AticAtacThingToCatch* t)
 		_thingPositionsSimple.find (t -> aspectId ());
 	assert (i != _thingPositionsSimple.end ());
 	_carrying.insert (AticAtacWorld::ThingPositions::value_type ((*i).first, (*i).second));
+	_carryingList.push_front ((*i).second); // In order, always at front!
 	// ...and finally the element is not longer visible in that screen...
 	t -> setVisible (false); 
 }
@@ -125,44 +128,52 @@ void AticAtacWorld::thingLeft ()
 	assert (_mainCharacter);
 	assert (_activeScene);
 
-	AticAtacWorld::ThingPositions::const_reverse_iterator i = _carrying.rbegin ();
-	if (i != _carrying.rend ())
-	{
-		AticAtacWorld::ThingPosition* t = (*i).second;
+	// If there is no elements in the ordered list of things being carried,
+	// ..then the function doesn't go on
+	// The element to leave is always the last one
+	AticAtacWorld::ThingPositionsList::const_reverse_iterator l = _carryingList.rbegin ();
+	if (l == _carryingList.rend ())
+		return;
 
-		// The thing can be cought in a room different than it was got...
-		// So the element is extracted from the list of objects per room...
-		// ...and the end of the method inserted it back in the new right room
-		AticAtacWorld::ThingPositionsPerRoom::const_iterator j = _thingPositions.find (t -> _room);
-		assert (j != _thingPositions.end ()); // The element has to exist (just to double check)
-		AticAtacWorld::ThingPositions tPR = (*j).second; // Get the current elements of the room
-		_thingPositions.erase (j); // Erase the full list of elements of the room
-		AticAtacWorld::ThingPositions::const_iterator k = tPR.find (t -> _id);
-		assert (k != tPR.end ()); // The element has to exist (just to double check)
-		tPR.erase (k); // Erase the specific element from the list of objects in that old room
-		_thingPositions.insert (AticAtacWorld::ThingPositionsPerRoom::value_type (t -> _room, tPR));
-		// ...and insert back a new list of objects in the room, without the old element
+	// Gets the element from the ordered list
+	// ...ans assert it (double check). It must be ok always at that point!
+	AticAtacWorld::ThingPositions::const_iterator i = _carrying.find ((*l) -> _id);
+	assert (i != _carrying.end ());
+	AticAtacWorld::ThingPosition* t = (*i).second;
 
-		// The thing is left in the current room...
-		t -> _room = _roomNumber; 
-		// The thing is left at the current player position...
-		t -> _position = _mainCharacter -> position (); 
-		// The player has not the thing any more...
-		_mainCharacter -> leaveThing (General::_e._things [t -> _id]._whatIs);
-		// The way to erase something using a reverse iterator...
-		_carrying.erase ((++i).base ());
+	// The thing can be cought in a room different than it was got...
+	// So the element is extracted from the list of objects per room...
+	// ...and the end of the method inserted it back in the new right room
+	AticAtacWorld::ThingPositionsPerRoom::const_iterator j = _thingPositions.find (t -> _room);
+	assert (j != _thingPositions.end ()); // The element has to exist (just to double check)
+	AticAtacWorld::ThingPositions tPR = (*j).second; // Get the current elements of the room
+	AticAtacWorld::ThingPositions::const_iterator k = tPR.find (t -> _id);
+	assert (k != tPR.end ()); // The element has to exist in the old room (just to double check)
+	tPR.erase (k); // Erase the specific element from the list of objects in that old room
+	_thingPositions.erase (j); // Erase the full list of elements of the room
+	_thingPositions.insert (AticAtacWorld::ThingPositionsPerRoom::value_type (t -> _room, tPR));
+	// ...and insert back a new list of objects in the room, without the old element
 
-		// The thing is inserted back in the right new room...
-		j = _thingPositions.find (t -> _room);
-		tPR = (j == _thingPositions.end ()) ? AticAtacWorld::ThingPositions () : (*j).second;
-		if (j != _thingPositions.end ()) _thingPositions.erase (j);
-		tPR.insert (AticAtacWorld::ThingPositions::value_type (t -> _id, t));
-		_thingPositions.insert (AticAtacWorld::ThingPositionsPerRoom::value_type (t -> _room, tPR));
+	// The thing is left in the current room...
+	t -> _room = _roomNumber; 
+	// The thing is left at the current player position...
+	t -> _position = _mainCharacter -> position (); 
+	// The player has not the thing any more...
+	_mainCharacter -> leaveThing (General::_e._things [t -> _id]._whatIs);
+	// The way to erase something using a reverse iterator...
+	_carrying.erase (i);
+	_carryingList.erase ((++l).base ()); // It would be the same than "_carryingList.pop_back ()"
+
+	// The thing is inserted back in the right new room...
+	j = _thingPositions.find (t -> _room);
+	tPR = (j == _thingPositions.end ()) ? AticAtacWorld::ThingPositions () : (*j).second;
+	if (j != _thingPositions.end ()) _thingPositions.erase (j);
+	tPR.insert (AticAtacWorld::ThingPositions::value_type (t -> _id, t));
+	_thingPositions.insert (AticAtacWorld::ThingPositionsPerRoom::value_type (t -> _room, tPR));
 		
-		// The thing is set up into the current room...
-		((AticAtacScene*) _activeScene) -> setUpThing (General::_e._things [t -> _id],
-			_mainCharacter -> position ());
-	}
+	// The thing is set up into the current room...
+	((AticAtacScene*) _activeScene) -> setUpThing (General::_e._things [t -> _id],
+		_mainCharacter -> position ());
 }
 
 // ---
@@ -205,6 +216,8 @@ void AticAtacWorld::openExitDoor ()
 	if (dC2 -> _room == _roomNumber)
 		((AticAtacScene*) _activeScene)
 			-> actualizeDoorStatus (dC2 -> _id, dC2 -> _openClose);
+
+	// Clear sound to open the big exit door!!
 	QGAMES::Game::game () -> sound (__EXITDOOROPENSOUND) -> play (__OPENCLOSEDOORCHANNEL);
 }
 
@@ -215,7 +228,7 @@ void AticAtacWorld::closeExitDoor ()
 	AticAtacWorld::DoorCounter* dC1 = (*_doorCountersSimple.find (_exitDoorIds [0])).second;
 	AticAtacWorld::DoorCounter* dC2 = (*_doorCountersSimple.find (_exitDoorIds [1])).second;
 	if (!dC1 -> _openClose && !dC2 -> _openClose)
-		return; // It is already close...
+		return; // It is already closed...
 
 	dC1 -> _openClose = dC1 -> _openClose = false;
 	if (dC1 -> _room == _roomNumber)
@@ -224,6 +237,8 @@ void AticAtacWorld::closeExitDoor ()
 	if (dC2 -> _room == _roomNumber)
 		((AticAtacScene*) _activeScene)
 			-> actualizeDoorStatus (dC2 -> _id, dC2 -> _openClose);
+
+	// Clear sound to close the big exit door!!
 	QGAMES::Game::game () -> sound (__EXITDOORCLOSESOUND) -> play (__OPENCLOSEDOORCHANNEL);
 }
 
@@ -378,8 +393,8 @@ void AticAtacWorld::initializeThings ()
 			// This piece of code appears only under debug mode
 			// to permanetly open the exit door and simplify the debugging of the game
 			#ifndef NDEBUG
-//			if (obj._whatIs == General::__EXITDOOR)
-//				dC -> _openClose = true;
+			if (obj._whatIs == General::__EXITDOOR)
+				dC -> _openClose = true;
 			#endif
 
 			addDoorCounter (dC);
@@ -648,6 +663,7 @@ void AticAtacWorld::clearThings ()
 
 	// Clean up the list of things...
 	_carrying.clear (); // The objects from this list are already included in other list of things...
+	_carryingList.clear (); // Same than before...
 	_doorCounters.clear ();
 	_doorCountersSimple.clear ();
 	_foodCounters.clear ();

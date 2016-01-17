@@ -27,6 +27,8 @@ class AticAtacWorld : public QGAMES::World
 	/** To manage a map of positions. */
 	typedef std::map <int, ThingPosition*, std::less <int>> ThingPositions;
 	typedef std::map <int, ThingPositions, std::less <int>> ThingPositionsPerRoom;
+	/** To manage a list of things. */
+	typedef std::list <ThingPosition*> ThingPositionsList;
 
 	// Implementation
 	/** This is a basic counter to allow opening and closing doors even when
@@ -98,10 +100,13 @@ class AticAtacWorld : public QGAMES::World
 	void thingLeft ();
 	/** To leave everything- */
 	void thingsAllLeft ()
-							{ _carrying.clear (); }
+							{ _carrying.clear (); _carryingList.clear (); }
 	/** To know the things the user has. */
 	const ThingPositions& things () const
 							{ return (_carrying); }
+	/** To know the things the user carries in order. */
+	const ThingPositionsList& thingsInOrder () const
+							{ return (_carryingList); }
 	/** To know what is in the current room. 
 		It returns and object because it can be empty. */
 	ThingPositions thingsInCurrentRoom () const;
@@ -156,6 +161,8 @@ class AticAtacWorld : public QGAMES::World
 	AticAtacCharacter* _mainCharacter;
 	/** Things the main character is carring out. */
 	ThingPositions _carrying;
+	/** Things the main character is carring out in order. */
+	ThingPositionsList _carryingList;
 
 	// Define a set of important buoys..
 	/** Define a buoy to change the room. */

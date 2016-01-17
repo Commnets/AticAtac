@@ -131,7 +131,7 @@ bool AticAtacThings::couldMainCharacterExit () const
 	// When the game is in debug mode the user can always exit the game...
 	// So it is not needed to have the three pars of the exit key!
 	#ifndef NDEBUG
-//	return (true);
+	return (true);
 	#endif
 
 	// If there is no three things or more...
@@ -140,9 +140,9 @@ bool AticAtacThings::couldMainCharacterExit () const
 		return (false);
 
 	bool result = true; int count = 0;
-	for (AticAtacWorld::ThingPositions::const_iterator i = _things.begin (); 
+	for (AticAtacWorld::ThingPositionsList::const_iterator i = _things.begin (); 
 			i != _things.end () && result && count < 3; i++, count++)
-		if ((*i).first != (__EXITKEYID + count))
+		if ((*i) ->_id != (__EXITKEYID + count))
 			result = false; // First time the piece is not in the right position, exiting is not possible!
 	return (result);
 }
@@ -151,19 +151,19 @@ bool AticAtacThings::couldMainCharacterExit () const
 void AticAtacThings::initialize ()
 {
 	QGAMES::ScoreObject::initialize ();
-	_things = AticAtacWorld::ThingPositions ();
+	_things = AticAtacWorld::ThingPositionsList ();
 }
 
 void AticAtacThings::drawOn (QGAMES::Screen* s, const QGAMES::Position& p)
 {
 	int counterX = 0; int counterY = 0;
-	for (AticAtacWorld::ThingPositions::const_iterator i = _things.begin (); 
+	for (AticAtacWorld::ThingPositionsList::const_iterator i = _things.begin (); 
 			i != _things.end (); i++)
 	{
-		if ((*i).first > (int) General::_e._things.size ())
+		if ((*i) -> _id> (int) General::_e._things.size ())
 			continue; // Probably it is a key...we will see how to draw it...
 
-		General::ThingDefinition tD = General::_e._things [(*i).first];
+		General::ThingDefinition tD = General::_e._things [(*i) -> _id];
 		General::FormDefinition fD = *tD._forms.begin ();
 		QGAMES::Form* f = QGAMES::Game::game () -> form (fD._form);
 		f -> drawOn (s, fD._initialFrame, position () + 

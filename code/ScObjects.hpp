@@ -112,10 +112,10 @@ class AticAtacThings : public QGAMES::ScoreObject
 							{ return (new AticAtacThings ()); }
 
 	/** To set the things. */
-	void setThings (const AticAtacWorld::ThingPositions& t)
+	void setThings (const AticAtacWorld::ThingPositionsList& t)
 							{ _things = t; }
 	/** To know the things. */
-	const AticAtacWorld::ThingPositions& things () const
+	const AticAtacWorld::ThingPositionsList& things () const
 							{ return (_things); }
 
 	/** To know whether the main character could exit the game.
@@ -132,7 +132,7 @@ class AticAtacThings : public QGAMES::ScoreObject
 
 	private:
 	/** The things. */
-	AticAtacWorld::ThingPositions _things;
+	AticAtacWorld::ThingPositionsList _things;
 };
 
 /** A class to represent the time counter. 

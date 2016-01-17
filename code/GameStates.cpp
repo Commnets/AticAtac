@@ -22,7 +22,7 @@ void AticAtacGameStateLoading::onEnter ()
 	_logo = _game -> form (__COMMNETSFORM);
 	// The text used...
 	_text = new AticAtacPresentationText (std::string ("COPYRIGHT 2015 Ignacio Cea Fornies"));
-	_text -> setSpace (-20); // Letters are tight!!
+	_text -> setSpace (-2); // Letters are tight!!
 	// Not fadding 
 	_fadeOut = false;
 	// The counter for alpha channel to the begging...
@@ -220,7 +220,22 @@ void AticAtacGameStateSelect::optionSelected ()
 		_options [5] = _optionLevels [_currentOptionLevel];
 		delete _optionGraphics [5];
 		_optionGraphics [5] = new AticAtacPresentationText (_options [5]);
-		_optionGraphics [5] -> setSpace (-12);
+		_optionGraphics [5] -> setSpace (0);
+	}
+}
+
+// ---
+void AticAtacGameStateSelect::optionAt (const QGAMES::Position& pos)
+{
+	QGAMES::Position oPos (__BD (__SCREENWIDTH__ - 410), __BD 40, __BD 0);
+	for (int i = 0; i < __NUMBEROFOPTIONS; i++)
+	{
+		QGAMES::Position p1C = oPos + 
+			(__BD (i * 60) * QGAMES::Vector (__BD 0, __BD 1, __BD 0));
+		QGAMES::Position p2C = p1C + QGAMES::Vector (__BD 350, __BD 54, __BD 0);
+		QGAMES::Rectangle rOpt (p1C, p2C);
+		if (rOpt.hasIn (pos))
+			_currentOption = i;
 	}
 }
 
@@ -242,9 +257,9 @@ void AticAtacGameStateSelect::onEnter ()
 	_options.resize (__NUMBEROFOPTIONS);
 	_options [0] = std::string ("Keyboard");
 	_options [1] = std::string ("Joystick");
-	_options [2] = std::string ("Knigh");
+	_options [2] = std::string ("Knight");
 	_options [3] = std::string ("Wizard");
-	_options [4] = std::string ("Serf");
+	_options [4] = std::string ("Servant");
 	_options [5] = _optionLevels [_currentOptionLevel];
 	_options [6] = std::string ("Start game");
 
@@ -253,7 +268,7 @@ void AticAtacGameStateSelect::onEnter ()
 	for (int i = 0; i < __NUMBEROFOPTIONS; i++)
 	{
 		_optionGraphics [i] = new AticAtacPresentationText (_options [i]);
-		_optionGraphics [i] -> setSpace (-12);
+		_optionGraphics [i] -> setSpace (0);
 	}
 
 	// ..and also the graphics in the left...
@@ -514,7 +529,7 @@ void AticAtacGameStateArrive::updatePositions ()
 	
 	// ...time limit?
 	// Two seconds is the time the player takes to graw...
-	if (_counter++ > (5 * _game -> framesPerSecond ()))
+	if (_counter++ > (4 * _game -> framesPerSecond ()))
 		_game ->setState (std::string (__GAMESTATEPLAYINGNAME));
 }
 
@@ -630,13 +645,18 @@ void AticAtacGameStateDie::updatePositions ()
 	// finishes or continues...
 	if (_counter++ > (3 * _game -> framesPerSecond ()))
 	{
-		AticAtacGame* g = (AticAtacGame*) _game;
-		if (g -> numberOfLives () == 1) // It was the last live...
-			g -> setState (std::string (__GAMESTATEENDNAME));
+		if (((AticAtacGame*) _game) -> numberOfLives () == 1) // It was the last live...
+			((AticAtacGame*) _game) -> // ...so the game finishes!
+				setState (std::string (__GAMESTATEENDNAME));
 		else
 		{
-			g -> setNumberOfLives (g -> numberOfLives () - 1);
-			g -> setState (std::string (__GAMESTATESTARTSNAME));
+			// Only in real mode, the lives go down!
+			#ifdef NDEBUG
+			((AticAtacGame*) _game) -> 
+				setNumberOfLives (((AticAtacGame*) _game) -> numberOfLives () - 1);
+			#endif
+			((AticAtacGame*) _game) -> // The game starts back again!
+				setState (std::string (__GAMESTATESTARTSNAME));
 		}
 	}
 }

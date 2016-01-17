@@ -43,6 +43,9 @@ void AticAtacMap::updatePositions ()
 		{
 			_counter = 0;
 			_fallingLines += 4; // Every box is made up of four lines...
+			if (_fallingLines > 
+				((int) General::_e._roomTypes [General::_e._rooms [_roomNumber]._type].size () - 4)) 
+					_fallingLines = 0; // Start again if the limit of lines has been reached...
 		}
 	}
 
@@ -55,7 +58,6 @@ void AticAtacMap::drawOn (QGAMES::Screen* s, const QGAMES::Position& p)
 {
 	QGAMES::ObjectMap::drawOn (s, p);
 
-	// It is time to draw the lines of the room the player is in...
 	General::RoomDefinition room = General::_e._rooms [_roomNumber];
 	General::RoomPicture picture = General::_e._roomTypes [room._type];
 
@@ -65,40 +67,37 @@ void AticAtacMap::drawOn (QGAMES::Screen* s, const QGAMES::Position& p)
 	// will be drawn in each iteration...
 	if (_roomNumber == __FALLINGROOM)
 	{
-		if (_fallingLines > ((int) picture.size () - 4)) _fallingLines = 0;
 		for (int i = 0; i < 4; i++)
 			s -> drawLine (picture [i + _fallingLines]._origin, picture [i + _fallingLines]._end, 
 				room._color);
 	}
 	else
+	{
 		for (General::RoomPicture::const_iterator i = picture.begin ();
 				i != picture.end (); i++)
 			s -> drawLine ((*i)._origin, (*i)._end, room._color);
+	}
 
 	#ifndef NDEBUG
-	// Draw something at the center...
 	// Only in debug mode...
-	QGAMES::Position c = QGAMES::Position (__BD General::_e._rooms [_roomNumber]._cx,
-		__BD General::_e._rooms [_roomNumber]._cy);
-	QGAMES::Position leftUp = c - QGAMES::Position (__BD (General::_e._rooms [_roomNumber]._w), 
-		__BD (General::_e._rooms [_roomNumber]._h), __BD 0);
-	QGAMES::Position leftDown = c - QGAMES::Position (__BD (General::_e._rooms [_roomNumber]._w), 
-		-__BD (General::_e._rooms [_roomNumber]._h), __BD 0);
-	QGAMES::Position rightUp = c + QGAMES::Position (__BD (General::_e._rooms [_roomNumber]._w), 
-		-__BD (General::_e._rooms [_roomNumber]._h), __BD 0);
-	QGAMES::Position rightDown = c + QGAMES::Position (__BD (General::_e._rooms [_roomNumber]._w), 
-		__BD (General::_e._rooms [_roomNumber]._h), __BD 0);
-	s -> drawLine (c - QGAMES::Position (__BD 0, __BD 30, __BD 0), 
-		c + QGAMES::Position (__BD 0, __BD 30), __GRAYCOLOR);
-	s -> drawLine (c - QGAMES::Position (__BD 30, __BD 0, __BD 0), 
-		c + QGAMES::Position (__BD 30, __BD 0, __BD 0), __GRAYCOLOR);
-	s -> drawLine (leftUp, leftUp + QGAMES::Position (__BD 30, __BD 0, __BD 0), __GRAYCOLOR);
-	s -> drawLine (leftUp, leftUp + QGAMES::Position (__BD 0, __BD 30, __BD 0), __GRAYCOLOR);
-	s -> drawLine (leftDown, leftDown + QGAMES::Position (__BD 30, __BD 0, __BD 0), __GRAYCOLOR);
-	s -> drawLine (leftDown, leftDown - QGAMES::Position (__BD 0, __BD 30, __BD 0), __GRAYCOLOR);
-	s -> drawLine (rightUp, rightUp - QGAMES::Position (__BD 30, __BD 0, __BD 0), __GRAYCOLOR);
-	s -> drawLine (rightUp, rightUp + QGAMES::Position (__BD 0, __BD 30, __BD 0), __GRAYCOLOR);
-	s -> drawLine (rightDown, rightDown - QGAMES::Position (__BD 30, __BD 0, __BD 0), __GRAYCOLOR);
-	s -> drawLine (rightDown, rightDown - QGAMES::Position (__BD 0, __BD 30, __BD 0), __GRAYCOLOR);
+	// Draw something at the center...
+	// and something in the limits of the floor of the room...
+	QGAMES::Position c = QGAMES::Position (__BD room._cx, __BD room._cy);
+	QGAMES::Position leftUp = c - QGAMES::Position (__BD room._w, __BD room._h, __BD 0);
+	QGAMES::Position leftDown = c - QGAMES::Position (__BD room._w,	-__BD room._h, __BD 0);
+	QGAMES::Position rightUp = c + QGAMES::Position (__BD room._w, -__BD room._h, __BD 0);
+	QGAMES::Position rightDown = c + QGAMES::Position (__BD room._w, __BD room._h, __BD 0);
+	QGAMES::Position sHLine (__BD 30, __BD 0, __BD 0);
+	QGAMES::Position sVLine (__BD 0, __BD 30, __BD 0);
+	s -> drawLine (c - sVLine, c + sVLine, __GRAYCOLOR);
+	s -> drawLine (c - sHLine, c + sHLine, __GRAYCOLOR);
+	s -> drawLine (leftUp, leftUp + sHLine, __GRAYCOLOR);
+	s -> drawLine (leftUp, leftUp + sVLine, __GRAYCOLOR);
+	s -> drawLine (leftDown, leftDown + sHLine, __GRAYCOLOR);
+	s -> drawLine (leftDown, leftDown - sVLine, __GRAYCOLOR);
+	s -> drawLine (rightUp, rightUp - sHLine, __GRAYCOLOR);
+	s -> drawLine (rightUp, rightUp + sVLine, __GRAYCOLOR);
+	s -> drawLine (rightDown, rightDown - sHLine, __GRAYCOLOR);
+	s -> drawLine (rightDown, rightDown - sVLine, __GRAYCOLOR);
 	#endif
 }

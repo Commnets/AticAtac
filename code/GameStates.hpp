@@ -113,6 +113,7 @@ class AticAtacGameStateSelect : public QGAMES::GameState
 	void nextOption ();
 	void previousOption ();
 	void optionSelected ();
+	void optionAt (const QGAMES::Position& pos);
 
 	/** @see parent. */
 	void onEnter ();

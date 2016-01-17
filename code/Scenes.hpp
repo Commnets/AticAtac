@@ -27,8 +27,8 @@ class AticAtacScene : public QGAMES::Scene
 	/** To change the number of the scene where the game is taking place.
 		The second, third and fourth parameters indicates the real status of the doors,
 		whether if the food has or not to be shown, the real things in the room,
-		and the list of tombs inthe game.
-		The last two parameters indicate the romn and the object someone is comming from...if any.
+		and the list of tombs in the game.
+		The last two parameters indicate the room and the object someone is comming from...if any.
 		This is to set up the form and the aspect of the door the player is comming from. */
 	void setRoomNumber (int r, 
 		const AticAtacWorld::DoorCounters& dC,
@@ -75,11 +75,11 @@ class AticAtacScene : public QGAMES::Scene
 
 	// Implementation methods...
 	// Used by setRoomNUmber ()
-	void setUpBackgroundObjects (const AticAtacWorld::DoorCounters& dC,
+	int setUpBackgroundObjects (const AticAtacWorld::DoorCounters& dC,
 		const AticAtacWorld::ThingPositions& tbP, int fR, int fO);
-	void setUpMonsters (const AticAtacWorld::ThingPositions& tP);
-	void setUpThingsToEat (const AticAtacWorld::FoodCounters& fC);
-	void setUpThingsToCatch (const AticAtacWorld::ThingPositions& tP);
+	int setUpMonsters (const AticAtacWorld::ThingPositions& tP);
+	int setUpThingsToEat (const AticAtacWorld::FoodCounters& fC);
+	int setUpThingsToCatch (const AticAtacWorld::ThingPositions& tP);
 
 	private:
 	/** The number of the room the player is now in.

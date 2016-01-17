@@ -79,7 +79,7 @@ void AticAtacGame::resetGame ()
 	// The internal status variables are set to their initial values...
 	_numberOfLives = __INITIALNUMBEROFLIVES;
 	_energyPercentage = 0;
-	_carrying = AticAtacWorld::ThingPositions ();
+	_carrying = AticAtacWorld::ThingPositionsList ();
 	((AticAtacWorld*) _activeWorld) -> thingsAllLeft ();
 	_shooting = 0; // No weapons flying...
 
@@ -145,8 +145,8 @@ void AticAtacGame::setRoomNumber (int nR, int fR, int fO)
 // ---
 QGAMES::Position AticAtacGame::centerOfCurrentRoom () const
 {
-	return ((_activeWorld == NULL) // No way to know the current center of the room...
-		? QGAMES::Position::_cero : ((AticAtacWorld*) _activeWorld) -> centerOfCurrentRoom ());
+	assert (_activeWorld); // No way to know the current center of the room...
+	return (((AticAtacWorld*) _activeWorld) -> centerOfCurrentRoom ());
 }
 
 // ---
@@ -230,7 +230,7 @@ void AticAtacGame::toCatch (AticAtacThingToCatch* t)
 	assert (_activeWorld);
 
 	((AticAtacWorld*) _activeWorld) -> thingCaught (t);
-	_carrying = ((AticAtacWorld*) _activeWorld) -> things ();
+	_carrying = ((AticAtacWorld*) _activeWorld) -> thingsInOrder ();
 	_things -> setThings (_carrying);
 	_somethingCaught = true;
 
@@ -248,7 +248,7 @@ void AticAtacGame::toLeaveLast ()
 	assert (_activeWorld);
 
 	((AticAtacWorld*) _activeWorld) -> thingLeft ();
-	_carrying = ((AticAtacWorld*) _activeWorld) -> things ();
+	_carrying = ((AticAtacWorld*) _activeWorld) -> thingsInOrder ();
 	_things -> setThings (_carrying);
 
 	// If after leaving something
@@ -268,7 +268,7 @@ void AticAtacGame::toLeaveAll ()
 	assert (_activeWorld);
 
 	((AticAtacWorld*) _activeWorld) -> thingsAllLeft ();
-	_carrying = ((AticAtacWorld*) _activeWorld) -> things ();
+	_carrying = ((AticAtacWorld*) _activeWorld) -> thingsInOrder ();
 	_things -> setThings (_carrying);
 }
 
@@ -326,7 +326,7 @@ void AticAtacGame::updatePositions ()
 	{
 		_countEnergy = 0;
 		setEnergyAvailable (energyAvailable () + 1);
-		if (energyAvailable () == 100) // It is going to die...
+		if (energyAvailable () >= 100) // It is going to die...
 			playerDies ();
 	}
 
@@ -371,17 +371,17 @@ void AticAtacGame::addScoreObjects ()
 
 	// Adds the score object to count time...
 	_timeCounter = new AticAtacTimeCounter;
-	_timeCounter -> setPosition (QGAMES::Position (__BD 520, __BD 165, __BD 0));
+	_timeCounter -> setPosition (QGAMES::Position (__BD 535, __BD 165, __BD 0));
 	_timeCounter -> initialize ();
-	_timeCounter -> setSpace (-10);
+	_timeCounter -> setSpace (2);
 	_timeCounter -> setMaxTextLength (5);
 	_timeCounter -> setSeconds (0);
 
 	// Adds the score to count points...
 	_scoreCounter = new AticAtacScoreCounter;
-	_scoreCounter -> setPosition (QGAMES::Position (__BD 520, __BD 220, __BD 0));
+	_scoreCounter -> setPosition (QGAMES::Position (__BD 535, __BD 220, __BD 0));
 	_scoreCounter -> initialize ();
-	_scoreCounter -> setSpace (-10);
+	_scoreCounter -> setSpace (2);
 	_scoreCounter -> setNumberLength (5);
 	_scoreCounter -> setNumber (0);
 
@@ -505,7 +505,7 @@ void AticAtacGame::initialize ()
 	// The energy is full...
 	_energyPercentage = 0;
 	// No things carrying...
-	_carrying = AticAtacWorld::ThingPositions ();
+	_carrying = AticAtacWorld::ThingPositionsList ();
 	// No weapons are flying...
 	_shooting = 0;
 	// No time consumed...

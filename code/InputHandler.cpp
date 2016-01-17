@@ -87,13 +87,55 @@ void InputHandler::onKeyboardEvent (QGAMES::KeyboardEventData* dt)
 // ---
 void InputHandler::onMouseMovementEvent (QGAMES::MouseMovementEventData* dt)
 {
-	// TO DO
+	int gS = _game -> activeState () -> type ();
+	switch (gS)
+	{
+		case __GAMESTATESELECT:
+			((AticAtacGameStateSelect*) _game -> activeState ()) -> 
+				optionAt (QGAMES::Position (__BD dt -> _x, __BD dt -> _y, __BD 0));
+			break;
+	}
 }
 
 // ---
 void InputHandler::onMouseButtonEvent (QGAMES::MouseButtonEventData* dt)
 {
-	// TO DO
+	int gS = _game -> activeState () -> type ();
+	switch (gS)
+	{
+		case __GAMESTATEINITIAL:
+			if (dt -> _button == SDL_BUTTON_LEFT && !dt -> _on)
+				((AticAtacGameStateInitial*) _game -> activeState ()) -> setWantToExit (true);
+			break;
+
+		case __GAMESTATEDEMO:
+			if (dt -> _button == SDL_BUTTON_LEFT && !dt -> _on)
+				((AticAtacGameStateDemo*) _game -> activeState ()) -> setWantToExit (true);
+			break;
+
+		case __GAMESTATEEND:
+			if (dt -> _button == SDL_BUTTON_LEFT && !dt -> _on)
+				((AticAtacGameStateEnd*) _game -> activeState ()) -> setWantToExit (true);
+			break;
+
+		case __GAMESTATEWIN:
+			if (dt -> _button == SDL_BUTTON_LEFT && !dt -> _on)
+				((AticAtacGameStateWin*) _game -> activeState ()) -> setWantToExit (true);
+			break;
+
+		case __GAMESTATESELECT:
+			if (dt -> _button == SDL_BUTTON_LEFT && !dt -> _on) // To select one option...
+				((AticAtacGameStateSelect*) _game -> activeState ()) -> optionSelected ();
+			break;
+
+		case __GAMESTATEPLAYING:
+			if (dt -> _button == SDL_BUTTON_LEFT && !dt -> _on) // To pause / continue the game...
+				_game -> isGamePaused () ? _game -> continueGame () : _game -> pauseGame ();
+			break;
+
+		default:
+			break;
+	}
 }
 
 // ---
@@ -159,6 +201,6 @@ void InputHandler::manageKeyOnEnd (int k)
 void InputHandler::manageKeyOnWin (int k)
 {
 	if (k == SDL_SCANCODE_RETURN)
-		((AticAtacGameStateEnd*) _game -> activeState ()) -> setWantToExit (true);
+		((AticAtacGameStateWin*) _game -> activeState ()) -> setWantToExit (true);
 }
 

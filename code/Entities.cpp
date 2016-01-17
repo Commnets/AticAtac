@@ -126,24 +126,24 @@ void AticAtacCharacter::setType (AticAtacCharacter::Type t)
 	switch (_type)
 	{
 		case AticAtacCharacter::Type::__KNIGHT:
-			_initialFrameLeft = 0; _finalFrameLeft = 7;
-			_initialFrameRight = 8; _finalFrameRight = 15;
-			_initialFrameUp = 16; _finalFrameUp = 23;
-			_initialFrameDown = 24; _finalFrameDown = 31;
+			_initialFrameLeft = __KNIGHTLEFTINIT; _finalFrameLeft = __KNIGHTLEFTEND;
+			_initialFrameRight = __KNIGHTRIGHTINIT; _finalFrameRight = __KNIGHTRIGHTEND;
+			_initialFrameUp = __KNIGHTUPINIT; _finalFrameUp = __KNIGHTUPEND;
+			_initialFrameDown = __KNIGHTDOWNINIT; _finalFrameDown = __KNIGHTDOWNEND;
 			break;
 
 		case AticAtacCharacter::Type::__WIZARD:
-			_initialFrameLeft = 32; _finalFrameLeft = 39;
-			_initialFrameRight = 40; _finalFrameRight = 47;
-			_initialFrameUp = 48; _finalFrameUp = 55;
-			_initialFrameDown = 56; _finalFrameDown = 63;
+			_initialFrameLeft = __WIZARDLEFTINIT; _finalFrameLeft = __WIZARDLEFTEND;
+			_initialFrameRight = __WIZARDRIGHTINIT; _finalFrameRight = __WIZARDRIGHTEND;
+			_initialFrameUp = __WIZARDUPINIT; _finalFrameUp = __WIZARDUPEND;
+			_initialFrameDown = __WIZARDDOWNINIT; _finalFrameDown = __WIZARDDOWNEND;
 			break;
 
 		case AticAtacCharacter::Type::__SERVANT:
-			_initialFrameLeft = 64; _finalFrameLeft = 71;
-			_initialFrameRight = 72; _finalFrameRight = 79;
-			_initialFrameUp = 80; _finalFrameUp = 87;
-			_initialFrameDown = 88; _finalFrameDown = 95;
+			_initialFrameLeft = __SERVANTLEFTINIT; _finalFrameLeft = __SERVANTLEFTEND;
+			_initialFrameRight = __SERVANTRIGHTINIT; _finalFrameRight = __SERVANTRIGHTEND;
+			_initialFrameUp = __SERVANTUPINIT; _finalFrameUp = __SERVANTUPEND;
+			_initialFrameDown = __SERVANTDOWNINIT; _finalFrameDown = __SERVANTDOWNEND;
 			break;
 
 		default:
@@ -299,18 +299,18 @@ void AticAtacWeapon::setType (AticAtacWeapon::Type t)
 	switch (_type)
 	{
 		case AticAtacWeapon::Type::__WEAPONKNIGHT:
-			_initialFrameLeft = 18; _finalFrameLeft = 25;
-			_initialFrameRight = 0; _finalFrameRight = 17;
+			_initialFrameLeft = __WKNIGHTLEFTINI; _finalFrameLeft = __WKNIGHTLEFTEND;
+			_initialFrameRight = __WKNIGHTRIGHTINI; _finalFrameRight = __WKNIGHTRIGHTEND;
 			break;
 
 		case AticAtacWeapon::Type::__WEAPONWIZARD:
-			_initialFrameLeft = 18; _finalFrameLeft = 25;
-			_initialFrameRight = 0; _finalFrameRight = 17;
+			_initialFrameLeft = __WWIZARDLEFTINI; _finalFrameLeft = __WWIZARDLEFTEND;
+			_initialFrameRight = __WWIZARDRIGHTINI; _finalFrameRight = __WWIZARDRIGHTEND;
 			break;
 
 		case AticAtacWeapon::Type::__WEAPONSERVANT:
-			_initialFrameLeft = 0; _finalFrameLeft = 7;
-			_initialFrameRight = 0; _finalFrameRight = 7;
+			_initialFrameLeft = __WSERVANTLEFTINI; _finalFrameLeft = __WSERVANTLEFTEND;
+			_initialFrameRight = __WSERVANTRIGHTINI; _finalFrameRight = __WSERVANTRIGHTEND;
 			break;
 
 		default:
@@ -331,7 +331,7 @@ void AticAtacWeapon::setVisible (bool v)
 	if (_isVisible)
 	{
 		_counterMov = 0;
-		_maxSecondsMov = 4 + (rand () % 4); // Max 8 seconds...
+		_maxSecondsMov = 4 + (rand () % 4); // Max 8 seconds...and 4 min
 	}
 }
 
