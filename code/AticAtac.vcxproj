@@ -105,6 +105,7 @@
     <ClInclude Include="MovementsBuilder.hpp" />
     <ClInclude Include="MtEntities.hpp" />
     <ClInclude Include="OriginalData.hpp" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Scenes.hpp" />
     <ClInclude Include="ScObjects.hpp" />
     <ClInclude Include="stdafx.h" />
@@ -149,6 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="classes.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AticAtac.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Knight.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
