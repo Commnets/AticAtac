@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __MAPS_HPP__
 #define __MAPS_HPP__
 
@@ -50,3 +53,6 @@ class AticAtacMap : public QGAMES::ObjectMap
 };
 
 #endif
+  
+// End of the file
+/*@}*/

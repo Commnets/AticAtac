@@ -1,3 +1,7 @@
+/** \addtogroup Atic */
+/*@{*/
+
+
 #ifndef __EVENTS_HPP__
 #define __EVENTS_HPP__
 
@@ -30,3 +34,6 @@ struct AticAtacFinishEventData
 };
 
 #endif
+  
+// End of the file
+/*@}*/

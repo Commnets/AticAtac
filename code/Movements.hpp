@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __MOVEMENTS_HPP__
 #define __MOVEMENTS_HPP__
 
@@ -83,3 +86,6 @@ class MovementWeaponInRoom : public MovementEntityInRoom
 };
 
 #endif
+  
+// End of the file
+/*@}*/

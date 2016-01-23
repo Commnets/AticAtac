@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __TIMER_HPP__
 #define __TIMER_HPP__
 
@@ -17,3 +20,6 @@ class Timer : public QGAMES::Timer
 };
 
 #endif
+  
+// End of the file
+/*@}*/

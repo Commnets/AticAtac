@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __MTENTITIES_HPP__
 #define __MTENTITIES_HPP__
 
@@ -270,3 +273,6 @@ class MonsterMushroomBehaviour : public AticAtacMonster::Behaviour
 };
 
 #endif
+  
+// End of the file
+/*@}*/

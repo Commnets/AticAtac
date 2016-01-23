@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __WORLDS_HPP__
 #define __WORLDS_HPP__
 
@@ -240,3 +243,6 @@ class AticAtacWorld : public QGAMES::World
 };
 
 #endif
+  
+// End of the file
+/*@}*/

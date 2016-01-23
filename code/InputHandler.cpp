@@ -108,15 +108,30 @@ void InputHandler::onJoystickAxisMoveEvent (QGAMES::JoystickMovementEventData* d
 		{
 			if (dt -> _numberAxis == 1) // Moving in the y axis to select...
 			{
-				// The system will move focust to next or previous position
-				// Just if is not already changing! (see dcalaration of AticAtacGameStateSelect class.
-				// Joysticks don't work like in old times!
-				// Now they return the position int the axis of a "virtual" cursor being move 
-				// with the joystick. This axis
+				// The system will move focus to the next or previous position
+				// Just if is not already changing! (see declaration of AticAtacGameStateSelect class).
 				AticAtacGameStateSelect* st = (AticAtacGameStateSelect*) _game -> activeState ();
-				if (dt -> _deadLine > (maxPosJoystick (dt -> _numberAxis) / 2)) st -> nextOption ();
-				else if (dt -> _deadLine < (minPosJoystick (dt -> _numberAxis) / 2)) st -> previousOption ();
+				if (dt -> _deadLine > 0)
+				{
+					if (dt -> _deadLine > (maxPosJoystick (dt -> _numberAxis) / 4))
+						_dJ += (_dJ < 1) ? 1 : 0;
+					else
+						_dJ -= (_dJ > 0) ? 1 : 0;
+				}
+				else
+				if (dt -> _deadLine < 0)
+				{
+					if (dt -> _deadLine < (minPosJoystick (dt -> _numberAxis) / 4))
+						_dJ += (_dJ > -1) ? -1 : 0;
+					else
+						_dJ -= (_dJ < 0) ? -1 : 0;
+				}
 			}
+
+			// Move to the option depending on the axis movement...
+			AticAtacGameStateSelect* st = (AticAtacGameStateSelect*) _game -> activeState ();
+			if (_dJ == 1) st -> nextOption ();
+			else if (_dJ == -1) st -> previousOption ();
 		}
 	}
 }

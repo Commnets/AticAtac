@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __SCENTITIES_HPP__
 #define __SCENTITIES_HPP__
 
@@ -179,3 +182,6 @@ class AticAtacScoreCounter : public QGAMES::ScoreObjectNumber
 };
 
 #endif
+  
+// End of the file
+/*@}*/

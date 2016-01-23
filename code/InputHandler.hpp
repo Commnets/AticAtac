@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __INPUTHANDLER_HPP__
 #define __INPUTHANDLER_HPP__
 
@@ -10,7 +13,8 @@ class InputHandler : public SDLInputHandler
 		: SDLInputHandler (g),
 		  _joystick (false),
 		  _lastKey (-1),
-		  _mX (0), _mY (0)
+		  _mX (0), _mY (0),
+		  _dJ (0)
 							{ }
 
 	// To control the joystick...
@@ -57,6 +61,12 @@ class InputHandler : public SDLInputHandler
 		If the joystick is in a diagonal two or three events can be generated. 
 		an it is necessary to acumulate the position to better control. */
 	int _mX, _mY;
+	/** To control whether it is necessary to move to the next or previous option
+		using a joystick or not.*/
+	int _dJ;
 };
 
 #endif
+  
+// End of the file
+/*@}*/

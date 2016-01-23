@@ -1,3 +1,7 @@
+/** \addtogroup Atic */
+/*@{*/
+
+
 #ifndef __DEFS__
 #define __DEFS__
 
@@ -378,3 +382,6 @@
 #define __ATICATACMAP						111
 
 #endif
+  
+// End of the file
+/*@}*/

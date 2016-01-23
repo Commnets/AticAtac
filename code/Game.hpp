@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __GAME_HPP__
 #define __GAME_HPP__
 
@@ -210,3 +213,6 @@ class AticAtacGame : public QGAMES::ArcadeGame
 };
 
 #endif
+  
+// End of the file
+/*@}*/

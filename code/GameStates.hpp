@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __GAMESTATES_HPP__
 #define __GAMESTATES_HPP__
 
@@ -381,3 +384,6 @@ class AticAtacGameStateWin : public QGAMES::GameState
 };
 
 #endif
+  
+// End of the file
+/*@}*/

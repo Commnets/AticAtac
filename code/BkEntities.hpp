@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __BKENTITIES_HPP__
 #define __BKENTITIES_HPP__
 
@@ -120,3 +123,6 @@ class AticAtacBackgroundEntity : public QGAMES::Artist
 };
 
 #endif
+  
+// End of the file
+/*@}*/

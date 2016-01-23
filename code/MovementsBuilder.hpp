@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __MOVEMENTSBUILDER_HPP__
 #define __MOVEMENTSBUILDER_HPP__
 
@@ -15,3 +18,6 @@ class MovementsBuilder : public QGAMES::MovementBuilder
 };
 
 #endif
+  
+// End of the file
+/*@}*/

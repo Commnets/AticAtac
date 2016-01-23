@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __GAMEIMPLEMENTATION_HPP__
 #define __GAMEIMPLEMENTATION_HPP__
 
@@ -15,3 +18,6 @@ class GameImplementation : public SDLGame
 
 
 #endif
+  
+// End of the file
+/*@}*/

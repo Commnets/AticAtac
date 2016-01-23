@@ -1,3 +1,7 @@
+/** \addtogroup Atic */
+/*@{*/
+
+
 #ifndef __ENTITIES_HPP__
 #define __ENTITIES_HPP__
 
@@ -166,3 +170,6 @@ class AticAtacWeapon : public QGAMES::Artist
 };
 
 #endif
+  
+// End of the file
+/*@}*/

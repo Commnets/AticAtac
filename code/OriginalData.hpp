@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __ORIGINALDATA_HPP__
 #define __ORIGINALDATA_HPP__
 
@@ -23,4 +26,7 @@ class OriginalData
 };
 
 #endif
+  
+// End of the file
+/*@}*/
 

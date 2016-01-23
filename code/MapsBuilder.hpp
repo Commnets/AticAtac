@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __MAPSBUILDER_HPP__
 #define __MAPSBUILDER_HPP__
 
@@ -16,3 +19,6 @@ class MapsBuilderAddsOn : public QGAMES::ObjectMapBuilderAddsOn
 };
 
 #endif
+  
+// End of the file
+/*@}*/

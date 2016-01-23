@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __CTENTITIES_HPP__
 #define __CTENTITIES_HPP__
 
@@ -55,3 +58,6 @@ class AticAtacThingToCatch : public QGAMES::Artist
 };
 
 #endif
+  
+// End of the file
+/*@}*/

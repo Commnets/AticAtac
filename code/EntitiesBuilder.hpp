@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __ENTITIESBUILDER_HPP__
 #define __ENTITIESBUILDER_HPP__
 
@@ -15,4 +18,7 @@ class EntitiesBuilder : public QGAMES::EntityBuilder
 };
 
 #endif
+  
+// End of the file
+/*@}*/
 

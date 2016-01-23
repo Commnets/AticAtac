@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __WORLDSBUILDER_HPP__
 #define __WORLDSBUILDER_HPP__
 
@@ -17,5 +20,7 @@ class WorldsBuilder : public QGAMES::WorldBuilder
 		const QGAMES::SceneProperties& p, const QGAMES::EntitiesPerLayer& ePL);
 };
 
-
 #endif
+  
+// End of the file
+/*@}*/

@@ -1,3 +1,6 @@
+/** \addtogroup Atic */
+/*@{*/
+
 #ifndef __SCENES_HPP__
 #define __SCENES_HPP__
 
@@ -120,3 +123,6 @@ class AticAtacScene : public QGAMES::Scene
 };
 
 #endif
+  
+// End of the file
+/*@}*/
