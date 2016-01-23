@@ -1,5 +1,6 @@
 #include "GameStates.hpp"
 #include "Game.hpp"
+#include "InputHandler.hpp"
 
 // ---
 AticAtacPresentationText::AticAtacPresentationText (const std::string& t)
@@ -298,8 +299,9 @@ void AticAtacGameStateSelect::onEnter ()
 	_movingToOption = 0;
 	// No counter in place to execute the movement
 	_positionOption = 0;
-	// Type of control selected
-	_typeOfControl = 0; // Keyboard...
+	// Type of control selected: Keyboard or Joystick?
+	// First time it will be keyboard, but after first game who knows?
+	_typeOfControl = ((InputHandler*) _game -> inputHandler ()) -> isJoystickActive () ? 1 : 0; 
 	// Type of player selected
 	_typePlayer = AticAtacCharacter::Type::__KNIGHT;
 	// Blinking attribute
@@ -424,6 +426,8 @@ void AticAtacGameStateSelect::onExit ()
 	((AticAtacGame*) _game) -> setPlayerType (_typePlayer);
 	// It is time to select the level...
 	((AticAtacGame*) _game) -> setLevel (_currentOptionLevel);
+	// Select the type of control: joystick or keyboard?
+	((AticAtacGame*) _game) -> setJoystick ((_typeOfControl == 0) ? false : true);
 }
 
 // ---

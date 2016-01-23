@@ -6,6 +6,7 @@
 #include "MapsBuilder.hpp"
 #include "WorldsBuilder.hpp"
 #include "GameStates.hpp"
+#include "InputHandler.hpp"
 #include "Defs.hpp"
 #include "Events.hpp"
 #include <SDL/sdlformbuilder.hpp>
@@ -122,6 +123,13 @@ void AticAtacGame::setLevel (int l)
 {
 	assert (l < 3);
 	_level = l;
+}
+
+// ---
+void AticAtacGame::setJoystick (bool j)
+{
+	assert (_inputHandler);
+	((InputHandler*) _inputHandler) -> activateJoystick (j);
 }
 
 // ---

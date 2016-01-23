@@ -112,6 +112,8 @@ class AticAtacGameStateSelect : public QGAMES::GameState
 
 	void nextOption ();
 	void previousOption ();
+	bool isMovingToAnOption () const
+							{ return (_movingToOption != 0); }
 	void optionSelected ();
 	void optionAt (const QGAMES::Position& pos);
 

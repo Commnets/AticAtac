@@ -56,6 +56,9 @@ class AticAtacGame : public QGAMES::ArcadeGame
 	/** To set a new level. */
 	void setLevel (int l);
 
+	/** To set whether the game is or not controlled by joystick. */
+	void setJoystick (bool j);
+
 	/** To know the current room number. */
 	int roomNumber () const;
 	/** To set the room number.
