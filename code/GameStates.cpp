@@ -611,7 +611,7 @@ void AticAtacGameStateFalling::onEnter ()
 void AticAtacGameStateFalling::updatePositions ()
 {
 	// Just to count...
-	if (_counter++ > (4 * _game -> framesPerSecond ()))
+	if (_counter++ > (2 * _game -> framesPerSecond ()))
 		_game -> setState (std::string (__GAMESTATEPLAYINGNAME));
 }
 

@@ -44,7 +44,7 @@ void MovementPlayerInRoom::initialize ()
 	QGAMES::MovementOneByOne::initialize ();
 
 	// Faster than none...
-	_speed = 2 * _baseSpeed;
+	_speed = 4 * _baseSpeed;
 }
 
 // ---
