@@ -228,6 +228,7 @@ void AticAtacGameStateSelect::optionSelected ()
 // ---
 void AticAtacGameStateSelect::optionAt (const QGAMES::Position& pos)
 {
+	_counterNoActivity = 0;
 	QGAMES::Position oPos (__BD (__SCREENWIDTH__ - 410), __BD 40, __BD 0);
 	for (int i = 0; i < __NUMBEROFOPTIONS; i++)
 	{

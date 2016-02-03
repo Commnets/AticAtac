@@ -108,7 +108,7 @@ void AticAtacGame::resetGame ()
 
 	// Initialize the score..
 	_scoreNumber = 0; // At the beggining there is no puntuation...
-	_scoreCounter -> setNumber (_numberOfSeconds);
+	_scoreCounter -> setNumber (_scoreNumber);
 
 	// Very internal attributes
 	_wantToCatch = false;
@@ -366,19 +366,19 @@ void AticAtacGame::addScoreObjects ()
 	setEnergyAvailable (0); // Always full when adding...
 
 	// Adds the score object to indicate the lives...
-	_lives = new AticAtacLives;
+	_lives = new AticAtacLives ();
 	_lives -> setPosition (QGAMES::Position (__BD 520, __BD 340, __BD 0));
 	_lives -> initialize ();
 	setNumberOfLives (_numberOfLives); // Converves the last number of lives declared...
 
 	// Adds the things the player has...
-	_things = new AticAtacThings;
+	_things = new AticAtacThings ();
 	_things -> setPosition (QGAMES::Position (__BD 520, __BD 75, __BD 0));
 	_things -> initialize ();
 	_things -> setThings (_carrying); // Conserves what the player was carrying before...
 
 	// Adds the score object to count time...
-	_timeCounter = new AticAtacTimeCounter;
+	_timeCounter = new AticAtacTimeCounter ();
 	_timeCounter -> setPosition (QGAMES::Position (__BD 535, __BD 165, __BD 0));
 	_timeCounter -> initialize ();
 	_timeCounter -> setSpace (2);
@@ -386,7 +386,7 @@ void AticAtacGame::addScoreObjects ()
 	_timeCounter -> setSeconds (0);
 
 	// Adds the score to count points...
-	_scoreCounter = new AticAtacScoreCounter;
+	_scoreCounter = new AticAtacScoreCounter ();
 	_scoreCounter -> setPosition (QGAMES::Position (__BD 535, __BD 220, __BD 0));
 	_scoreCounter -> initialize ();
 	_scoreCounter -> setSpace (2);
@@ -405,7 +405,7 @@ void AticAtacGame::addScoreObjects ()
 // ---
 void AticAtacGame::removeScoreObjects ()
 {
-	AticAtacGame::ArcadeGame::removeScoreObjects ();
+	QGAMES::ArcadeGame::removeScoreObjects ();
 
 	delete _scoreFrame;
 	_scoreFrame = NULL;

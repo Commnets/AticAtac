@@ -181,7 +181,7 @@ class AticAtacGameStateDemo : public QGAMES::GameState
 		: QGAMES::GameState (__GAMESTATEDEMO, g),
 		  _wantToExit (false),
 		  _soundPlaying (0),
-		 _counter (0)
+		  _counter (0)
 							{ }
 
 	void setWantToExit (bool e)

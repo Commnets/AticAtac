@@ -149,7 +149,7 @@ class AticAtacTimeCounter : public QGAMES::ScoreObjectText
 	AticAtacTimeCounter ();
 
 	virtual Entity* clone ()
-							{ return (new AticAtacTimeCounter); }
+							{ return (new AticAtacTimeCounter ()); }
 
 	/** To convert a time passed as parameter in seconds,
 		into a text to be shown in the score object. */
@@ -173,7 +173,7 @@ class AticAtacScoreCounter : public QGAMES::ScoreObjectNumber
 	AticAtacScoreCounter ();
 
 	virtual Entity* clone ()
-							{ return (new AticAtacScoreCounter); }
+							{ return (new AticAtacScoreCounter ()); }
 
 	protected:
 	/** @see parent. */

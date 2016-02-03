@@ -4,9 +4,6 @@
 // ---
 int _tmain (int argc, _TCHAR* argv[])
 {
-	// The rectangles are simple...
-	QGAMES::Rectangle::_basic2DRectangle = true;
-
 	// Initialize the generic data...
 	General::_e.initialize ();
 
