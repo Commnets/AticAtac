@@ -230,6 +230,12 @@ void AticAtacGame::noShoot ()
 		((AticAtacWorld*) _activeWorld) -> noShoot (--_shooting);
 }
 
+// ---
+void AticAtacGame::noShootAtAll ()
+{
+	while (_shooting > 0)
+		noShoot ();
+}
 
 // ---
 void AticAtacGame::toCatch (AticAtacThingToCatch* t)

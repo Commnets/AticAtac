@@ -622,6 +622,8 @@ void AticAtacGameStateFalling::onExit ()
 	((AticAtacGame*) _game) -> setRoomNumber (_roomNumberTarget);
 	((AticAtacCharacter*) (__AGM _game) -> artist (__ENTITYPLAYER)) -> 
 		setPosition (_playerPosition);
+	((AticAtacGame*) _game) -> noShootAtAll ();
+	// After falling, start to shoot again...
 }
 
 // ---
@@ -678,6 +680,8 @@ void AticAtacGameStateDie::onExit ()
 	// Definetively at this point, the sound has finished...
 	// So this instruction is just in case
 	_game -> sound (__PLAYERDIES) -> stop ();
+	// After dieing, start to shoot again...
+	((AticAtacGame*) _game) -> noShootAtAll ();
 }
 
 // ---

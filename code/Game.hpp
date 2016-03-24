@@ -111,6 +111,8 @@ class AticAtacGame : public QGAMES::ArcadeGame
 	void shoot ();
 	/** To stop shooting the last weapon. */
 	void noShoot ();
+	/** To stop shooting anything. */
+	void noShootAtAll ();
 
 	/** To know the things caught. */
 	const AticAtacWorld::ThingPositionsList& thingsCaught () const
