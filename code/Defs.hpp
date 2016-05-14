@@ -18,8 +18,8 @@
 
 // Main parameters of the screen game...
 #define __GAMESNAME__						"ICF AticAtac Game"
-#define __SCREENXPOS__						50  // Where the room starts in the x axis
-#define __SCREENYPOS__						50  // Where the room starts in the y axis
+#define __SCREENXPOS__						350  // Where the room starts in the x axis
+#define __SCREENYPOS__						100  // Where the room starts in the y axis
 #define __SCREENWIDTH__						690 // (256 * 2.5) + 50
 #define __SCREENHEIGHT__					480 // (192 * 2.5)
 #define __GRAYCOLOR							QGAMES::Color (50,50,50) // To surround things...
