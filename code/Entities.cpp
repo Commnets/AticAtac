@@ -21,7 +21,7 @@ AticAtacCharacter::AticAtacCharacter (int id, const QGAMES::Forms& f,
 }
 
 // ---
-bool AticAtacCharacter::canMove (const QGAMES::Vector& d, const QGAMES::Vector& a) const
+bool AticAtacCharacter::canMove (const QGAMES::Vector& d, const QGAMES::Vector& a)
 {
 	assert (_currentMovement);
 	assert (_currentForm);

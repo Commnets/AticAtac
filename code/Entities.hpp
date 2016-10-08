@@ -26,7 +26,7 @@ class AticAtacCharacter : public QGAMES::Artist
 		This method is used by the movement classes.
 		The content is quite complicated, as the player can move into the doors
 		when they are opened or he has the right key to open them. */
-	virtual bool canMove (const QGAMES::Vector& d, const QGAMES::Vector& a) const;
+	virtual bool canMove (const QGAMES::Vector& d, const QGAMES::Vector& a);
 
 	/** To set and to know the type. */
 	void setType (Type t);
