@@ -454,7 +454,7 @@ QGAMES::FormBuilder* AticAtacGame::createFormBuilder ()
 // ---
 QGAMES::ObjectBuilder* AticAtacGame::createObjectBuilder ()
 {
-	return (new QGAMES::ObjectBuilder (std::string (__OBJECTSFILE__)));
+	return (new QGAMES::ObjectBuilder (std::string (__OBJECTSFILE__), formBuilder ())); 
 }
 
 // ---

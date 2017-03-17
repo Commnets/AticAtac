@@ -59,7 +59,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\..\lib;..\..\..\CPPLIBS\SDL2-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_image-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_mixer-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_gfx-1.0.1\Win32\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ArcadeLibD.lib;CommonlibD.lib;CommonSDLD.lib;tinyxmlD.lib;SDL2.lib;SDL2_image.lib;SDL2_mixer.lib;TmxParserD.lib;SDL2_gfx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ArcadeLibD.lib;CommonlibD.lib;CommonSDLD.lib;tinyxmlD.lib;SDL2.lib;SDL2_image.lib;SDL2_mixer.lib;TmxParserD.lib;SDL2_gfx.lib;zpplibD.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -71,15 +71,15 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\..\..\CPPLIBS\SDL2-2.0.0\include;..\..\..\CPPLIBS\SDL2_image-2.0.0\include;..\..\..\CPPLIBS\SDL2_mixer-2.0.0\include;..\..\..\CPPLIBS\SDL2_gfx-1.0.1;..\..\projects\tinyxml;..\..\projects\tmxparser;..\..\include</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>..\..\lib;..\..\..\CPPLIBS\SDL2-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_image-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_mixer-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_gfx-1.0.1\Win32\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Commonlib.lib;ArcadeLib.lib;CommonSDL.lib;tinyxml.lib;SDL2.lib;SDL2_image.lib;TmxParser.lib;SDL2_mixer.lib;SDL2_gfx.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>Commonlib.lib;ArcadeLib.lib;CommonSDL.lib;tinyxml.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;TmxParser.lib;SDL2_mixer.lib;SDL2_gfx.lib;zpplib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
