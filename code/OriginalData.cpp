@@ -559,12 +559,12 @@ const int OriginalData::backgroundElements [__NUMBEROFOBJECTS__][8] =
 													// located at 80,31 position (0x50, 0x1F)
 													// at the top position of the room (0x00),
 													// the doors open / close every 4 seconds (0x04)
-													// As it is a door (element 3 <> 0x00) and in a odd (1) positiom, the conexion
+													// As it is a door (element 3 <> 0x00) and in a odd (1) positiom, the connection
 													// is the object located next...
 	{ 0x02,0x00,0x34,0x50,0xB7,0x80,0x04,0x06 }, // ..which is also a door (0x02) in room 0 (0x00)
 													// located at 80,182 position (0x50, 0xB7)
 													// at the bottom position of the room (0x80)
-													// As it is a door (element 8 <> 0x00) and in a even (2) position, the conexion
+													// As it is a door (element 8 <> 0x00) and in a even (2) position, the connection
 													// is the object located previously...
 	{ 0x02,0x19,0x34,0xA0,0x6F,0x60,0xB7,0x03 },
 	{ 0x02,0x00,0x34,0x08,0x6F,0xE0,0x06,0x03 },
@@ -923,7 +923,7 @@ const int OriginalData::backgroundElements [__NUMBEROFOBJECTS__][8] =
 													// The flag is always 0x03 when it is a trap door (0x19)
 													// open / close every 24 seconds
 													// As it is a door (element 3 <> 0x00) in a odd position
-													// the conexion is the next element...
+													// the connection is the next element...
 	{ 0x1B,0x74,0x34,0x48,0x74,0x03,0x00,0x00 }, // which is a rug (0x1B) in room 116 (0x74)
 													// located at position 72,116 (0x48, 0x74),
 													// The flag is always 0x03 when it is a rug (0x1B)
@@ -1086,7 +1086,7 @@ const int OriginalData::backgroundElements [__NUMBEROFOBJECTS__][8] =
 													// located at position 48,39 (0x30, 0x27)
 													// Flag == 0x01, it means the clock is at the top..
 													// As it is a door (element 3 <> 0x00), in a odd position
-													// The conexion os the next element...
+													// The connection os the next element...
 	{ 0x10,0x13,0x34,0x30,0xB7,0x81,0x04,0x06 }, // which is also a clock, but with the flags attribute = 0x81 instead 0x01
 													// what means a different orientation...at the bottom...
 	{ 0x10,0x09,0x34,0x30,0x27,0x01,0x04,0x56 },

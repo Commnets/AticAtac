@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Game.hpp"
+#include <Common/resourcesreader.hpp>
 
 #ifndef _CONSOLE
 #include <SDL.h>
@@ -13,6 +14,14 @@ extern C_LINKAGE int main (int argc, char *argv [])
 int _tmain (int argc, char *argv [])
 #endif /* _CONSOLE */
 {
+#ifdef NDEBUG
+	// In the release version, the resources are in a zip file
+	// This instruction reads them and store in temporaly files when needed!
+	// The resource reader is deleted at the end, and all the temporal file with them!
+	QGAMES::InZipResourceReader rR 
+		(std::string (".") + __PATH_SEPARATOR__ + std::string ("temp"));
+#endif
+
 	// Initialize the generic data...
 	General::_e.initialize ();
 
