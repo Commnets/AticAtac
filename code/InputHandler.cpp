@@ -3,32 +3,6 @@
 #include "Game.hpp"
 #include "Entities.hpp"
 #include "Defs.hpp"
-#include <iostream>
-
-// ---
-void InputHandler::treatKeyboardStatus (const unsigned __int8* k)
-{
-	if (_game -> activeState () -> type () == __GAMESTATEPLAYING)
-	{
-		// If the device to control the main character is the joystick, nothing to do here...
-		// Keyboard and joystick can not be active at the same time when playing
-		// The reason is, no action in any of them generates a no movement of the main character
-		// This method is call after processing any event, including keyboard events
-		// So, if the joystick is being used to move the character, and a movement is generated
-		// when the system enters this method, and the keyboard is not in use, the movement finishes...
-		if (_joystick)
-			return; 
-
-		int dX = 0; int dY = 0;
-		if (k [SDL_SCANCODE_S]) dX = 1;
-		if (k [SDL_SCANCODE_A]) dX = -1;
-		if (k [SDL_SCANCODE_L]) dY = 1;
-		if (k [SDL_SCANCODE_P]) dY = -1;
-		((AticAtacWorld*) (((AticAtacGame*) _game) -> activeWorld ())) 
-			-> moveCharacter (QGAMES::Vector (__BD dX, __BD dY, __BD 0));
-		// If no key is pressed the character stops!
-	}
-}
 
 // ---
 void InputHandler::onJoystickAxisMoveEvent (QGAMES::JoystickMovementEventData* dt)
@@ -64,7 +38,7 @@ void InputHandler::onJoystickAxisMoveEvent (QGAMES::JoystickMovementEventData* d
 			{
 				if (dt -> _deadLine > 0)
 				{
-					if (dt -> _deadLine > (maxPosJoystick (dt -> _numberAxis) / 4))
+					if (dt -> _deadLine > (game () -> inputHandler () -> maxPosJoystick (dt -> _numberAxis) / 4))
 						_mX += (_mX < 1) ? 1 : 0;
 					else
 						_mX -= (_mX > 0) ? 1 : 0;
@@ -72,7 +46,7 @@ void InputHandler::onJoystickAxisMoveEvent (QGAMES::JoystickMovementEventData* d
 				else
 				if (dt -> _deadLine < 0)
 				{
-					if (dt -> _deadLine < (minPosJoystick (dt -> _numberAxis) / 4))
+					if (dt -> _deadLine < (game () -> inputHandler () -> minPosJoystick (dt -> _numberAxis) / 4))
 						_mX += (_mX > -1) ? -1 : 0;
 					else
 						_mX -= (_mX < 0) ? -1 : 0;
@@ -84,7 +58,7 @@ void InputHandler::onJoystickAxisMoveEvent (QGAMES::JoystickMovementEventData* d
 			{
 				if (dt -> _deadLine > 0)
 				{
-					if (dt -> _deadLine > (maxPosJoystick (dt -> _numberAxis) / 4))
+					if (dt -> _deadLine > (game () -> inputHandler () -> maxPosJoystick (dt -> _numberAxis) / 4))
 						_mY += (_mY < 1) ? 1 : 0;
 					else
 						_mY -= (_mY > 0) ? 1 : 0;
@@ -92,7 +66,7 @@ void InputHandler::onJoystickAxisMoveEvent (QGAMES::JoystickMovementEventData* d
 				else
 				if (dt -> _deadLine < 0)
 				{
-					if (dt -> _deadLine < (minPosJoystick (dt -> _numberAxis) / 4))
+					if (dt -> _deadLine < (game () -> inputHandler () -> minPosJoystick (dt -> _numberAxis) / 4))
 						_mY += (_mY > -1) ? -1 : 0;
 					else
 						_mY -= (_mY < 0) ? -1 : 0;
@@ -113,7 +87,7 @@ void InputHandler::onJoystickAxisMoveEvent (QGAMES::JoystickMovementEventData* d
 				AticAtacGameStateSelect* st = (AticAtacGameStateSelect*) _game -> activeState ();
 				if (dt -> _deadLine > 0)
 				{
-					if (dt -> _deadLine > (maxPosJoystick (dt -> _numberAxis) / 4))
+					if (dt -> _deadLine > (game () -> inputHandler () -> maxPosJoystick (dt -> _numberAxis) / 4))
 						_dJ += (_dJ < 1) ? 1 : 0;
 					else
 						_dJ -= (_dJ > 0) ? 1 : 0;
@@ -121,7 +95,7 @@ void InputHandler::onJoystickAxisMoveEvent (QGAMES::JoystickMovementEventData* d
 				else
 				if (dt -> _deadLine < 0)
 				{
-					if (dt -> _deadLine < (minPosJoystick (dt -> _numberAxis) / 4))
+					if (dt -> _deadLine < (game () -> inputHandler () -> minPosJoystick (dt -> _numberAxis) / 4))
 						_dJ += (_dJ > -1) ? -1 : 0;
 					else
 						_dJ -= (_dJ < 0) ? -1 : 0;
@@ -191,7 +165,7 @@ void InputHandler::onKeyboardEvent (QGAMES::KeyboardEventData* dt)
 		}
 	}
 	else
-		_lastKey = dt -> _key;
+		_lastKey = dt -> _internalCode;
 
 	if (pKey)
 	{
@@ -248,32 +222,32 @@ void InputHandler::onMouseButtonEvent (QGAMES::MouseButtonEventData* dt)
 	switch (gS)
 	{
 		case __GAMESTATEINITIAL:
-			if (dt -> _button == SDL_BUTTON_LEFT && !dt -> _on)
+			if (dt -> _internalCode == QGAMES::MouseButtonCode::QGAMES_BUTTONLEFT && !dt -> _on)
 				((AticAtacGameStateInitial*) _game -> activeState ()) -> setWantToExit (true);
 			break;
 
 		case __GAMESTATEDEMO:
-			if (dt -> _button == SDL_BUTTON_LEFT && !dt -> _on)
+			if (dt -> _internalCode == QGAMES::MouseButtonCode::QGAMES_BUTTONLEFT && !dt -> _on)
 				((AticAtacGameStateDemo*) _game -> activeState ()) -> setWantToExit (true);
 			break;
 
 		case __GAMESTATEEND:
-			if (dt -> _button == SDL_BUTTON_LEFT && !dt -> _on)
+			if (dt -> _internalCode == QGAMES::MouseButtonCode::QGAMES_BUTTONLEFT && !dt -> _on)
 				((AticAtacGameStateEnd*) _game -> activeState ()) -> setWantToExit (true);
 			break;
 
 		case __GAMESTATEWIN:
-			if (dt -> _button == SDL_BUTTON_LEFT && !dt -> _on)
+			if (dt -> _internalCode == QGAMES::MouseButtonCode::QGAMES_BUTTONLEFT && !dt -> _on)
 				((AticAtacGameStateWin*) _game -> activeState ()) -> setWantToExit (true);
 			break;
 
 		case __GAMESTATESELECT:
-			if (dt -> _button == SDL_BUTTON_LEFT && !dt -> _on) // To select one option...
+			if (dt -> _internalCode == QGAMES::MouseButtonCode::QGAMES_BUTTONLEFT && !dt -> _on)
 				((AticAtacGameStateSelect*) _game -> activeState ()) -> optionSelected ();
 			break;
 
 		case __GAMESTATEPLAYING:
-			if (dt -> _button == SDL_BUTTON_LEFT && !dt -> _on) // To pause / continue the game...
+			if (dt -> _internalCode == QGAMES::MouseButtonCode::QGAMES_BUTTONLEFT && !dt -> _on)
 				_game -> isGamePaused () ? _game -> continueGame () : _game -> pauseGame ();
 			break;
 
@@ -283,29 +257,54 @@ void InputHandler::onMouseButtonEvent (QGAMES::MouseButtonEventData* dt)
 }
 
 // ---
+void InputHandler::onKeyboardStatus (const std::vector <bool>& kS)
+{
+	if (_game -> activeState () -> type () == __GAMESTATEPLAYING)
+	{
+		// If the device to control the main character is the joystick, nothing to do here...
+		// Keyboard and joystick can not be active at the same time when playing
+		// The reason is, no action in any of them generates a no movement of the main character
+		// This method is call after processing any event, including keyboard events
+		// So, if the joystick is being used to move the character, and a movement is generated
+		// when the system enters this method, and the keyboard is not in use, the movement finishes...
+		if (_joystick)
+			return; 
+
+		int dX = 0; int dY = 0;
+		if (kS [QGAMES::KeyCode::QGAMES_S]) dX = 1;
+		if (kS [QGAMES::KeyCode::QGAMES_A]) dX = -1;
+		if (kS [QGAMES::KeyCode::QGAMES_L]) dY = 1;
+		if (kS [QGAMES::KeyCode::QGAMES_P]) dY = -1;
+		((AticAtacWorld*) (((AticAtacGame*) _game) -> activeWorld ())) 
+			-> moveCharacter (QGAMES::Vector (__BD dX, __BD dY, __BD 0));
+		// If no key is pressed the character stops!
+	}
+}
+
+// ---
 void InputHandler::manageKeyOnInitialState (int k)
 {
-	if (k == SDL_SCANCODE_RETURN)
+	if (k == QGAMES::KeyCode::QGAMES_RETURN)
 		((AticAtacGameStateInitial*) _game -> activeState ()) -> setWantToExit (true);
 }
 
 // ---
 void InputHandler::manageKeyOnSelectState (int k)
 {
-	if (k == SDL_SCANCODE_RETURN)
+	if (k == QGAMES::KeyCode::QGAMES_RETURN)
 		((AticAtacGameStateSelect*) _game -> activeState ()) -> optionSelected ();
 	else
-	if (k == SDL_SCANCODE_DOWN)
+	if (k == QGAMES::KeyCode::QGAMES_DOWN)
 		((AticAtacGameStateSelect*) _game -> activeState ()) -> nextOption ();
 	else
-	if (k == SDL_SCANCODE_UP)
+	if (k == QGAMES::KeyCode::QGAMES_UP)
 		((AticAtacGameStateSelect*) _game -> activeState ()) -> previousOption ();
 }
 
 // ---
 void InputHandler::manageKeyOnDemoState (int k)
 {
-	if (k == SDL_SCANCODE_RETURN)
+	if (k == QGAMES::KeyCode::QGAMES_RETURN)
 		((AticAtacGameStateDemo*) _game -> activeState ()) -> setWantToExit (true);
 }
 
@@ -314,37 +313,36 @@ void InputHandler::manageKeyOnPlaying (int k)
 {
 	AticAtacWorld* w = (AticAtacWorld*) (((AticAtacGame*) _game) -> activeWorld ());
 	#ifndef NDEBUG
-	if (k == SDL_SCANCODE_LEFT || 
-		k == SDL_SCANCODE_RIGHT) // Just to move an screen more or less...
+	if (k == QGAMES::KeyCode::QGAMES_LEFT || 
+		k == QGAMES::KeyCode::QGAMES_RIGHT) // Just to move an screen more or less...
 	{
-		int rN = w -> roomNumber () + ((k == SDL_SCANCODE_LEFT) ? -1 : 1);
+		int rN = w -> roomNumber () + ((k == QGAMES::KeyCode::QGAMES_LEFT) ? -1 : 1);
 		if (rN >= __NUMBEROFROOMS__) rN = 0;
 		if (rN < 0) rN = __NUMBEROFROOMS__ - 1;
 		w -> setRoomNumber (rN);
 	}
 	else
 	#endif
-	if (k == SDL_SCANCODE_Q) // The q is to catch what is behind...if any...
+	if (k == QGAMES::KeyCode::QGAMES_Q) // The q is to catch what is behind...if any...
 		((AticAtacGame*) _game) -> setWantToCatch ();
 	else
-	if (k == SDL_SCANCODE_SPACE) // The space is to shoot the weapon...
+	if (k == QGAMES::KeyCode::QGAMES_SPACE) // The space is to shoot the weapon...
 		((AticAtacGame*) _game) -> shoot ();
 	else
-	if (k == SDL_SCANCODE_Z) // To pause/continue the game...
+	if (k == QGAMES::KeyCode::QGAMES_Z) // To pause/continue the game...
 		_game -> isGamePaused () ? _game -> continueGame () : _game -> pauseGame ();
 }
 
 // ---
 void InputHandler::manageKeyOnEnd (int k)
 {
-	if (k == SDL_SCANCODE_RETURN)
+	if (k == QGAMES::KeyCode::QGAMES_RETURN)
 		((AticAtacGameStateEnd*) _game -> activeState ()) -> setWantToExit (true);
 }
 
 // ---
 void InputHandler::manageKeyOnWin (int k)
 {
-	if (k == SDL_SCANCODE_RETURN)
+	if (k == QGAMES::KeyCode::QGAMES_RETURN)
 		((AticAtacGameStateWin*) _game -> activeState ()) -> setWantToExit (true);
 }
-

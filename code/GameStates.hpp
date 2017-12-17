@@ -4,9 +4,9 @@
 #ifndef __GAMESTATES_HPP__
 #define __GAMESTATES_HPP__
 
-#include <Common/gamestate.hpp>
 #include "Worlds.hpp"
 #include "Defs.hpp"
+#include <Arcade/arcadeinclude.hpp>
 
 /** A class to define text drawn
 	during the presentation. */

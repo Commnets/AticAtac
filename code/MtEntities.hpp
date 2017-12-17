@@ -4,11 +4,9 @@
 #ifndef __MTENTITIES_HPP__
 #define __MTENTITIES_HPP__
 
-#include <Common/entity.hpp>
-#include <Common/rectangle.hpp>
-#include <Arcade/artist.hpp>
 #include "General.hpp"
 #include "Defs.hpp"
+#include <Arcade/arcadeinclude.hpp>
 
 class AticAtacCharacter;
 
@@ -101,16 +99,6 @@ class AticAtacMonster : public QGAMES::Artist
 	Behaviour* behaviour () 
 							{ return (_behaviour); }
 
-	/** To know whether the monster is or not visible now. */
-	bool isVisible () const
-							{ return (_isVisible); }
-	/** To activate or desactivate if the monster object is visible. 
-		In a room (scene) there would be different monsters (up to a maximum of 5).
-		The monsters in the scene always will be the "same" entities.
-		Their aspects and positions will change accorging to the room the player is in. */
-	void setVisible (bool v)
-							{ _isVisible = v; }
-
 	/** Set the limits to move the monster....when it moves
 		Two versions of the method... */
 	void setMovingLimits (const QGAMES::Position& min, const QGAMES::Position& max);
@@ -135,8 +123,6 @@ class AticAtacMonster : public QGAMES::Artist
 	virtual void actualizePositionWhenMove ();
 
 	private:
-	/** To determinate whether the monster is or not visible. */
-	bool _isVisible;
 	/** The status of the monster. */
 	Status _status;
 	/** The behaviour of the monster.

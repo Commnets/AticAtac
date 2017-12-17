@@ -1,7 +1,5 @@
 #include "Entities.hpp"
 #include "Movements.hpp"
-#include <Arcade/arcadegame.hpp>
-#include <iostream>
 
 // ---
 void AticAtacFood::setAspectTo (const General::ThingDefinition& df)
@@ -14,7 +12,7 @@ void AticAtacFood::setAspectTo (const General::ThingDefinition& df)
 	setCurrentAspect (f._initialFrame); // Only one frame...
 	setPosition (df._position + f._adjust ); 
 
-	_isVisible = true; 
+	setVisible (true); 
 }
 
 // ---
@@ -30,7 +28,7 @@ QGAMES::Rectangle AticAtacFood::collisionZone () const
 // ---
 void AticAtacFood::updatePositions ()
 {
-	if (!_isVisible)
+	if (!isVisible ())
 		return; // Only when visible...
 
 	QGAMES::Artist::updatePositions ();
@@ -39,9 +37,6 @@ void AticAtacFood::updatePositions ()
 // ---
 void AticAtacFood::drawOn (QGAMES::Screen* s, const QGAMES::Position& p)
 {
-	if (!_isVisible)
-		return; // Only when visible...
-
 	QGAMES::Artist::drawOn (s, p);
 
 	#ifndef NDEBUG

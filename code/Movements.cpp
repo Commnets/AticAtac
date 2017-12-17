@@ -1,6 +1,4 @@
 #include "Movements.hpp"
-#include <Common/entity.hpp>
-#include <iostream>
 
 // ---
 void MovementEntityInRoom::moveOne (const QGAMES::Vector& d, const QGAMES::Vector& a, 

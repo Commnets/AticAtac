@@ -5,12 +5,9 @@
 #ifndef __ETENTITIES_HPP__
 #define __ETENTITIES_HPP__
 
-#include <Common/entity.hpp>
-#include <Common/rectangle.hpp>
-#include <Arcade/artist.hpp>
 #include "General.hpp"
 #include "Defs.hpp"
-
+#include <Arcade/arcadeinclude.hpp>
 
 /** This class represents an atic atac food. */
 class AticAtacFood : public QGAMES::Artist
@@ -20,9 +17,8 @@ class AticAtacFood : public QGAMES::Artist
 	AticAtacFood (int id, const QGAMES::Forms& f = QGAMES::Forms (), 
 		const QGAMES::Entity::Data& d = QGAMES::Entity::Data ()) 
 			: QGAMES::Artist (id, f, d),
-			  _dObjDefinition (),
-			  _isVisible (false)
-							{ /** Nothing else to do . */ }
+			  _dObjDefinition ()
+							{ setVisible (false); }
 
 	virtual Entity* clone ()
 							{ return (new AticAtacMonster (_id, _forms, _data)); }
@@ -35,16 +31,6 @@ class AticAtacFood : public QGAMES::Artist
 	/** To get what the thing caiought is. */
 	General::WhatIs whatIs () const
 							{ return (_dObjDefinition._whatIs); }
-
-	/** To know whether the food object is or not visible now. */
-	bool isVisible () const
-							{ return (_isVisible); }
-	/** To activate or desactivate if the food object is visible. 
-		In a room (scene) there would be different food (up to a maximum of 2).
-		The meal in the scene always will be the "same" entities.
-		Their aspects and positions will change accorging to the room the player is in. */
-	void setVisible (bool v)
-							{ _isVisible = v; }
 	
 	/** The collision zone is the real core of the food.
 		It is a little bit smaller than the standard collision zone. */
@@ -58,8 +44,6 @@ class AticAtacFood : public QGAMES::Artist
 	private:
 	/** What it is. */
 	General::ThingDefinition _dObjDefinition;
-	/** To determinate whether the food is or not visible. */
-	bool _isVisible;
 };
 
 #endif

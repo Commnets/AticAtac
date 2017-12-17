@@ -4,7 +4,7 @@
 #ifndef __ENTITIESBUILDER_HPP__
 #define __ENTITIESBUILDER_HPP__
 
-#include <Common/entitybuilder.hpp>
+#include <Arcade/arcadeinclude.hpp>
 
 class EntitiesBuilder : public QGAMES::EntityBuilder
 {

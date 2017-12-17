@@ -4,12 +4,10 @@
 #ifndef __SCENTITIES_HPP__
 #define __SCENTITIES_HPP__
 
-#include <Common/entity.hpp>
-#include <Common/rectangle.hpp>
-#include <Arcade/artist.hpp>
 #include "Worlds.hpp"
 #include "General.hpp"
 #include "Defs.hpp"
+#include <Arcade/arcadeinclude.hpp>
 
 /** Class to represent the chicken. */
 class AticAtacChicken : public QGAMES::ScoreObject

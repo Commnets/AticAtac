@@ -54,7 +54,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\..\..\CPPLIBS\SDL2-2.0.0\include;..\..\..\CPPLIBS\SDL2_image-2.0.0\include;..\..\..\CPPLIBS\SDL2_mixer-2.0.0\include;..\..\..\CPPLIBS\SDL2_gfx-1.0.1;..\..\projects\tinyxml;..\..\projects\tmxparser;..\..\include</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;__QGAMES_SDLLIBRARY__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -71,7 +71,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\..\..\CPPLIBS\SDL2-2.0.0\include;..\..\..\CPPLIBS\SDL2_image-2.0.0\include;..\..\..\CPPLIBS\SDL2_mixer-2.0.0\include;..\..\..\CPPLIBS\SDL2_gfx-1.0.1;..\..\projects\tinyxml;..\..\projects\tmxparser;..\..\include</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;__QGAMES_SDLLIBRARY__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -95,7 +95,6 @@
     <ClInclude Include="EtEntities.hpp" />
     <ClInclude Include="Events.hpp" />
     <ClInclude Include="Game.hpp" />
-    <ClInclude Include="GameImplementation.hpp" />
     <ClInclude Include="GameStates.hpp" />
     <ClInclude Include="General.hpp" />
     <ClInclude Include="InputHandler.hpp" />
@@ -110,7 +109,6 @@
     <ClInclude Include="ScObjects.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="Timer.hpp" />
     <ClInclude Include="Worlds.hpp" />
     <ClInclude Include="WorldsBuilder.hpp" />
   </ItemGroup>
@@ -121,7 +119,6 @@
     <ClCompile Include="EntitiesBuilder.cpp" />
     <ClCompile Include="EtEntities.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameImplementation.cpp" />
     <ClCompile Include="GameStates.cpp" />
     <ClCompile Include="General.cpp" />
     <ClCompile Include="InputHandler.cpp" />

@@ -4,10 +4,9 @@
 #ifndef __GAME_HPP__
 #define __GAME_HPP__
 
-#include <Arcade/arcadegame.hpp>
-#include "GameImplementation.hpp"
 #include "Entities.hpp"
 #include "ScObjects.hpp"
+#include <Arcade/arcadeinclude.hpp>
 
 /** Main class of the game. 
 	There can only be one instance of this class.
@@ -138,13 +137,10 @@ class AticAtacGame : public QGAMES::ArcadeGame
 
 	private:
 	// The methods to create the builders...
-	/** see @parent */
-	virtual QGAMES::FormBuilder* createFormBuilder ();
-	virtual QGAMES::ObjectBuilder* createObjectBuilder ();
+	/** @see parent */
 	virtual QGAMES::EntityBuilder* createEntityBuilder ();
 	virtual QGAMES::MovementBuilder* createMovementBuilder ();
-	virtual QGAMES::SoundBuilder* createSoundBuilder ();
-	virtual QGAMES::Timer* createTimer ();
+	virtual QGAMES::InputHandler* createInputHandler ();
 	virtual QGAMES::Screens createScreens ();
 	virtual QGAMES::WorldBuilder* createWorldBuilder ();
 	virtual QGAMES::MapBuilder* createMapBuilder ();

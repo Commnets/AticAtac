@@ -1,7 +1,5 @@
 #include "Entities.hpp"
 #include "Movements.hpp"
-#include <Arcade/arcadegame.hpp>
-#include <iostream>
 
 // ---
 AticAtacCharacter::AticAtacCharacter (int id, const QGAMES::Forms& f, 
@@ -9,14 +7,16 @@ AticAtacCharacter::AticAtacCharacter (int id, const QGAMES::Forms& f,
 	: QGAMES::Artist (id, f, d),
 	  _type (__KNIGHT),
 	  _things (),
-	  _isVisible (true),
 	  _counter (0),
 	  _initialFrameRight (0), _finalFrameRight (0),
 	  _initialFrameLeft (0), _finalFrameLeft (0),
 	  _cInitialFrame (0), _cFinalFrame (0),
 	  _lastOrientation (QGAMES::Vector::_cero),
 	  _doors (), _blockingElements ()
-{ 
+{
+	// Visible by default...
+	setVisible (true);
+
 	/** Nothing else to do */ 
 }
 
@@ -179,7 +179,7 @@ void AticAtacCharacter::initialize ()
 
 	setType (AticAtacCharacter::Type::__KNIGHT); // By default...
 	leaveAllThings ();
-	_isVisible = true; // By default...
+	setVisible (true); // By default...
 
 	_counter = 0;
 	_lastOrientation = QGAMES::Vector::_cero;
@@ -266,11 +266,6 @@ void AticAtacCharacter::updatePositions ()
 // ---
 void AticAtacCharacter::drawOn (QGAMES::Screen* s, const QGAMES::Position& p)
 {
-	// If it is not visible...
-	// It has not been drawn...
-	if (!_isVisible)
-		return;
-
 	QGAMES::Artist::drawOn (s, p);
 
 	#ifndef NDEBUG
@@ -327,8 +322,8 @@ void AticAtacWeapon::setType (AticAtacWeapon::Type t)
 // ---
 void AticAtacWeapon::setVisible (bool v)
 { 
-	_isVisible = v;
-	if (_isVisible)
+	QGAMES::Artist::setVisible (v);
+	if (isVisible ())
 	{
 		_counterMov = 0;
 		_maxSecondsMov = 4 + (rand () % 4); // Max 8 seconds...and 4 min
@@ -349,7 +344,7 @@ void AticAtacWeapon::initialize ()
 	QGAMES::Artist::initialize ();
 
 	setType (AticAtacWeapon::Type::__WEAPONKNIGHT); // By default...
-	_isVisible = true; // By default...
+	setVisible (true); // By default...
 
 	_counter = 0;
 	_lastOrientation = QGAMES::Vector::_cero;
@@ -359,7 +354,7 @@ void AticAtacWeapon::initialize ()
 void AticAtacWeapon::updatePositions ()
 {
 	// If it is not visible, the is doesn't move...
-	if (!_isVisible)
+	if (!isVisible ())
 		return;
 
 	QGAMES::Artist::updatePositions ();
@@ -418,11 +413,6 @@ void AticAtacWeapon::updatePositions ()
 // ---
 void AticAtacWeapon::drawOn (QGAMES::Screen* s, const QGAMES::Position& p)
 {
-	// If it is not visible...
-	// It has not been drawn...
-	if (!_isVisible)
-		return;
-
 	QGAMES::Artist::drawOn (s, p);
 
 	#ifndef NDEBUG

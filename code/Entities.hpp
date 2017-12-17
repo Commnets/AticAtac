@@ -32,12 +32,6 @@ class AticAtacCharacter : public QGAMES::Artist
 	void setType (Type t);
 	Type type () const
 							{ return (_type); }
-	/** To know whether the entity object is or not visible now. */
-	bool isVisible () const
-							{ return (_isVisible); }
-	/** To activate or desactivate if the entity object is visible.  */
-	void setVisible (bool v)
-							{ _isVisible = v; }
 
 	/** To know whether the entity has or not a thing. */
 	bool hasThing (General::WhatIs t) const
@@ -80,8 +74,6 @@ class AticAtacCharacter : public QGAMES::Artist
 	Type _type;
 	/** The things the entity has. */
 	std::vector <bool> _things;
-	/** To determinate whether the playe is or not visible. */
-	bool _isVisible;
 
 	// Implementation
 	/** Counter to count steps to change the aspect. */
@@ -113,12 +105,11 @@ class AticAtacWeapon : public QGAMES::Artist
 		const QGAMES::Entity::Data& d = QGAMES::Entity::Data ()) 
 			: QGAMES::Artist (id, f, d),
 			  _type (__WEAPONKNIGHT),
-			  _isVisible (true),
 			  _counter (0), _counterMov (0), _maxSecondsMov (0),
 			  _initialFrameRight (0), _finalFrameRight (0),
 			  _cInitialFrame (0), _cFinalFrame (0),
 			  _lastOrientation (QGAMES::Vector::_cero)
-							{ /** Nothing else to do */ }
+							{ setVisible (true); }
 
 	virtual Entity* clone ()
 							{ return (new AticAtacWeapon (_id, _forms, _data)); }
@@ -127,11 +118,9 @@ class AticAtacWeapon : public QGAMES::Artist
 	void setType (Type t);
 	Type type () const
 							{ return (_type); }
-	/** To know whether the entity object is or not visible now. */
-	bool isVisible () const
-							{ return (_isVisible); }
-	/** To activate or desactivate if the entity object is visible.  */
-	void setVisible (bool v);
+	/** @see parent.
+		To activate or desactivate if the entity object is visible.  */
+	virtual void setVisible (bool v);
 
 	/** Set the limits to move the weapon....when it moves
 		Two versions of the method... */
@@ -150,8 +139,6 @@ class AticAtacWeapon : public QGAMES::Artist
 	private:
 	/** The type of weapon we are playing with. */
 	Type _type;
-	/** To determinate whether the playe is or not visible. */
-	bool _isVisible;
 
 	// Implementation
 	/** Counter to count steps to change the aspect. */

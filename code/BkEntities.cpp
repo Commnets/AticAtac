@@ -1,8 +1,5 @@
 #include "Entities.hpp"
 #include "Movements.hpp"
-#include <Arcade/arcadegame.hpp>
-#include <Common/form.hpp>
-#include <iostream>
 
 // ---
 QGAMES::Rectangle AticAtacBackgroundEntity::influenceZone () const
@@ -23,7 +20,7 @@ QGAMES::Rectangle AticAtacBackgroundEntity::influenceZone () const
 void AticAtacBackgroundEntity::setAspectTo (const General::ObjectDefinition& obj)
 {
 	_dobjDefinition = obj;
-	_isVisible = true; // Setting up the aspect becomes the object visible...
+	setVisible (true); // Setting up the aspect becomes the object visible...
 
 	// The number of counters to count changes in
 	// The aspect will depend on the number of different forms..
@@ -93,7 +90,7 @@ QGAMES::Position AticAtacBackgroundEntity::posObjConnected () const
 // ---
 void AticAtacBackgroundEntity::initialize ()
 {
-	_isVisible = false; // The entity is initially not visible...
+	setVisible (false); // The entity is initially not visible...
 	_canCollision = false; // None of then can collision with none...
 	_dobjDefinition = General::ObjectDefinition (); // With no form...
 
@@ -106,7 +103,7 @@ void AticAtacBackgroundEntity::initialize ()
 // ---
 void AticAtacBackgroundEntity::updatePositions ()
 {
-	if (!_isVisible)
+	if (!isVisible ())
 		return; // Only when visible...
 
 	// Counters whether is or not time to change the aspect
@@ -130,9 +127,6 @@ void AticAtacBackgroundEntity::updatePositions ()
 // ---
 void AticAtacBackgroundEntity::drawOn (QGAMES::Screen* s, const QGAMES::Position& p)
 {
-	if (!_isVisible)
-		return; // Only when it is visible...
-
 	// When it is visible the background object can have several forms
 	// ..and all of them have to be drawn...
 	General::FormsDefinitionList fL = _dobjDefinition._forms;

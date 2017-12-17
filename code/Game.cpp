@@ -2,21 +2,17 @@
 #include "EntitiesBuilder.hpp"
 #include "MovementsBuilder.hpp"
 #include "Movements.hpp"
-#include "Timer.hpp"
 #include "MapsBuilder.hpp"
 #include "WorldsBuilder.hpp"
 #include "GameStates.hpp"
 #include "InputHandler.hpp"
 #include "Defs.hpp"
 #include "Events.hpp"
-#include <Common/resourcesreader.hpp>
-#include <SDL/sdlformbuilder.hpp>
-#include <SDL/sdlsoundbuilder.hpp>
-#include <iostream>
+#include <graphicsinclude.hpp>
 
 // ---
 AticAtacGame::AticAtacGame ()
-	: QGAMES::ArcadeGame (new GameImplementation (), QGAMES::Worlds ()),
+	: QGAMES::ArcadeGame (new __QGAMESGRAPHICSLIBRARY_IMPLEMENTATIONCLASS__ (), QGAMES::Worlds ()),
 	  _levels (),
 	  _level (0), // The level by default...
 	  _scoreFrame (NULL), _chicken (NULL), _lives (NULL), _things (NULL),
@@ -422,15 +418,15 @@ void AticAtacGame::removeScoreObjects ()
 {
 	QGAMES::ArcadeGame::removeScoreObjects ();
 
-	delete _scoreFrame;
+	delete (_scoreFrame);
 	_scoreFrame = NULL;
-	delete _chicken;
+	delete (_chicken);
 	_chicken = NULL;
-	delete _lives;
+	delete (_lives);
 	_lives = NULL;
-	delete _timeCounter;
+	delete (_timeCounter);
 	_timeCounter = NULL;
-	delete _scoreCounter;
+	delete (_scoreCounter);
 	_scoreCounter = NULL;
 	// The objects are set to NULL, because this method can be
 	// invoked twice in a programming mistake...
@@ -454,50 +450,32 @@ void AticAtacGame::processEvent (const QGAMES::Event& e)
 }
 
 // ---
-QGAMES::FormBuilder* AticAtacGame::createFormBuilder ()
-{ 
-	return (new SDL2DSpriteBuilder (std::string (__FORMSFILE__), 
-		(SDLScreen*) mainScreen ())); 
-}
-
-// ---
-QGAMES::ObjectBuilder* AticAtacGame::createObjectBuilder ()
-{
-	return (new QGAMES::ObjectBuilder (std::string (__OBJECTSFILE__), formBuilder ())); 
-}
-
-// ---
 QGAMES::EntityBuilder* AticAtacGame::createEntityBuilder ()
 { 
-	return (new EntitiesBuilder (__ENTITIESFILE__, 
+	return (new EntitiesBuilder (parameter (__GAME_PROPERTYENTITIESFILE__), 
 		formBuilder (), movementBuilder ())); 
 }
 
 // ---
 QGAMES::MovementBuilder* AticAtacGame::createMovementBuilder () 
 { 
-	return (new MovementsBuilder (__MOVEMENTSFILE__)); 
+	return (new MovementsBuilder (parameter (__GAME_PROPERTYMOVEMENTSFILE__))); 
 }
 
 // ---
-QGAMES::SoundBuilder* AticAtacGame::createSoundBuilder () 
-{ 
-	return (new SDLSoundBuilder (__SOUNDSFILE__)); 
-}
-
-// ---
-QGAMES::Timer* AticAtacGame::createTimer ()
-{ 
-	return (new Timer ()); 
+QGAMES::InputHandler* AticAtacGame::createInputHandler ()
+{
+	return (implementation () -> createInputHandler (new InputHandler ()));
 }
 
 // ---
 QGAMES::Screens AticAtacGame::createScreens ()
 { 
 	QGAMES::Screens r;
-	QGAMES::Screen* scr = new SDLScreen (__GAMESNAME__, 
-		 QGAMES::Position (0,0), __SCREENWIDTH__, __SCREENHEIGHT__, __SCREENXPOS__, __SCREENYPOS__);
-	scr -> windowAtCenter ();
+	QGAMES::Screen* scr = implementation () -> createScreen (std::string (__GAMESNAME__),
+		QGAMES::Position (0,0), __SCREENWIDTH__, __SCREENHEIGHT__, __SCREENXPOS__, __SCREENYPOS__);
+	assert (scr); // Just in case. It should happen anything but...!
+	scr -> windowAtCenter (); // To center the screen...
 	r.insert (QGAMES::Screens::value_type (__QGAMES_MAINSCREEN__, scr));
 	return (r); 
 }
@@ -505,13 +483,13 @@ QGAMES::Screens AticAtacGame::createScreens ()
 // ---
 QGAMES::WorldBuilder* AticAtacGame::createWorldBuilder ()
 {
-	return (new WorldsBuilder (std::string (__WORLDSFILE__), mapBuilder ()));
+	return (new WorldsBuilder (parameter (__GAME_PROPERTYWORLDSFILE__), mapBuilder ()));
 }
 
 // ---
 QGAMES::MapBuilder* AticAtacGame::createMapBuilder ()
 {
-	QGAMES::MapBuilder* result = new QGAMES::MapBuilder (std::string (__MAPSFILE__));
+	QGAMES::MapBuilder* result = new QGAMES::MapBuilder (parameter (__GAME_MAPSOBJECTSFILE__));
 	result -> addAddsOn (new MapsBuilderAddsOn (objectBuilder ()));
 	return (result);
 }

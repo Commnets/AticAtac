@@ -4,7 +4,7 @@
 #ifndef __MOVEMENTSBUILDER_HPP__
 #define __MOVEMENTSBUILDER_HPP__
 
-#include <Common/movementbuilder.hpp>
+#include <Arcade/arcadeinclude.hpp>
 
 class MovementsBuilder : public QGAMES::MovementBuilder
 {

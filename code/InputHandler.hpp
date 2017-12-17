@@ -4,13 +4,13 @@
 #ifndef __INPUTHANDLER_HPP__
 #define __INPUTHANDLER_HPP__
 
-#include <SDL/sdlinputhandler.hpp>
+#include <Arcade/arcadeinclude.hpp>
 
-class InputHandler : public SDLInputHandler
+class InputHandler : public QGAMES::InputHandler::Behaviour
 {
 	public:
-	InputHandler (QGAMES::Game* g)
-		: SDLInputHandler (g),
+	InputHandler ()
+		: QGAMES::InputHandler::Behaviour (),
 		  _joystick (false),
 		  _lastKey (-1),
 		  _mX (0), _mY (0),
@@ -31,15 +31,13 @@ class InputHandler : public SDLInputHandler
 	QGAMES::Vector joystickOrientation () const
 							{ return (QGAMES::Vector (__BD _mX, __BD _mY, __BD 0)); }
 
-	/** To treat when the key are pressed. */
-	virtual void treatKeyboardStatus (const unsigned __int8* k);
-
 	/** @see parent. */
 	virtual void onJoystickAxisMoveEvent (QGAMES::JoystickMovementEventData* dt);
 	virtual void onJoystickButtonEvent (QGAMES::JoystickButtonEventData* dt);
 	virtual void onKeyboardEvent (QGAMES::KeyboardEventData* dt);
 	virtual void onMouseMovementEvent (QGAMES::MouseMovementEventData* dt);
 	virtual void onMouseButtonEvent (QGAMES::MouseButtonEventData* dt);
+	virtual void onKeyboardStatus (const std::vector <bool>& kS);
 
 	private:
 	void manageKeyOnInitialState (int k);

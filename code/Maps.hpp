@@ -4,7 +4,7 @@
 #ifndef __MAPS_HPP__
 #define __MAPS_HPP__
 
-#include <Arcade/map.hpp>
+#include <Arcade/arcadeinclude.hpp>
 
 /** This class represents a map in Atic Atac Game.
 	In this case, the map, adopt the form of the room the player is in. */
@@ -13,7 +13,7 @@ class AticAtacMap : public QGAMES::ObjectMap
 	public:
 	AticAtacMap (int c, const QGAMES::Layers& l, int w, int h,
 		const QGAMES::MapProperties& p = QGAMES::MapProperties ())
-		: QGAMES::ObjectMap (c, l, w, h, p),
+		: QGAMES::ObjectMap (c, l, w, h, 0, p),
 		  _roomNumber (0),
 		  _counter (0),
 		  _fallingLines (0)

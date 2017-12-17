@@ -5,8 +5,7 @@
 #ifndef __EVENTS_HPP__
 #define __EVENTS_HPP__
 
-#include <Common/event.hpp>
-#include <Common/position.hpp>
+#include <Arcade/arcadeinclude.hpp>
 
 /** A simple structure to keep information 
 	about the target destination when the player is falling. */

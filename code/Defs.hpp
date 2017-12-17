@@ -5,17 +5,6 @@
 #ifndef __DEFS__
 #define __DEFS__
 
-#include <SDL.h>
-
-// Definition files...
-#define __ENTITIESFILE__					"entities.xml"
-#define __MOVEMENTSFILE__					"movements.xml"
-#define __FORMSFILE__						"forms.xml"
-#define __OBJECTSFILE__						"objects.xml"
-#define __SOUNDSFILE__						"sounds.xml"
-#define __WORLDSFILE__						"worlds.xml"
-#define __MAPSFILE__						"maps.xml"
-
 // Main parameters of the screen game...
 #define __GAMESNAME__						"ICF AticAtac Game"
 #define __SCREENXPOS__						350  // Where the room starts in the x axis

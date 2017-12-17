@@ -4,11 +4,9 @@
 #ifndef __BKENTITIES_HPP__
 #define __BKENTITIES_HPP__
 
-#include <Common/entity.hpp>
-#include <Common/rectangle.hpp>
-#include <Arcade/artist.hpp>
 #include "General.hpp"
 #include "Defs.hpp"
+#include <Arcade/arcadeinclude.hpp>
 
 class AticAtacBackgroundEntity;
 typedef std::vector <AticAtacBackgroundEntity*> BackgroundEntities;
@@ -22,14 +20,13 @@ class AticAtacBackgroundEntity : public QGAMES::Artist
 	AticAtacBackgroundEntity (int id, const QGAMES::Forms& f = QGAMES::Forms (), 
 		const QGAMES::Entity::Data& d = QGAMES::Entity::Data ()) 
 			: QGAMES::Artist (id, f, d),
-			  _isVisible (false),
 			  _canCollision (false),
 			  _dobjDefinition (),
 			  _counter (0),
 			  _counterFrames (),
 			  _isDoorOpen (false),
 			  _canOpenClose (true)
-							{ /** Nothing else to do . */ }
+							{ setVisible (false); }
 
 	virtual Entity* clone ()
 							{ return (new AticAtacBackgroundEntity (_id, _forms, _data)); }
@@ -47,16 +44,6 @@ class AticAtacBackgroundEntity : public QGAMES::Artist
 							{ return (_dobjDefinition._whatIs); }
 	/** To know the orientation in terms of a vector. */
 	QGAMES::Vector frameOrientation () const;
-	/** To know whether the background object is or not visible now. */
-	bool isVisible () const
-							{ return (_isVisible); }
-	/** To activate or desactivate if the background object is visible. 
-		In a room (scene) there would be different background objects (up to a maximum of 8).
-		The objects in the scene will be always the "same" entities.
-		Their aspects and positions will change according to the room the player is in. 
-		They can be activated. */
-	void setVisible (bool v)
-							{ _isVisible = v; }
 	/** To know whether the background object can or not collision with other. 
 		If it can collision or not will depend on the object it is. */
 	bool canCollision () const
@@ -102,8 +89,6 @@ class AticAtacBackgroundEntity : public QGAMES::Artist
 	virtual void drawOn (QGAMES::Screen* s, const QGAMES::Position& p);
 
 	private:
-	/** To determinate whether the object is or not visible. */
-	bool _isVisible;
 	/** To determinate whether the object can or not collision with 
 		the player usually. This happens in certain type of
 		objects, like doors and other behaving like doors. */

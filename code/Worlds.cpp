@@ -5,9 +5,6 @@
 #include "Maps.hpp"
 #include "GameStates.hpp"
 #include "Game.hpp"
-#include <Arcade/arcadegame.hpp>
-#include <Arcade/artist.hpp>
-#include <iostream>
 
 // ---
 AticAtacWorld::AticAtacWorld (const QGAMES::Scenes& s, const QGAMES::WorldProperties& p)
@@ -743,7 +740,7 @@ void* AticAtacWorld::ToChangeRoomBuoy::treatFor (QGAMES::Element* e)
 	AticAtacWorld* w = (AticAtacWorld*) e;
 	w -> setRoomNumber (_data ->_roomNumber, _data -> _originalRoomNumber, _data ->_objOrigin);
 	w -> _mainCharacter -> setPosition (_data -> _position);
-	delete _data;
+	delete (_data);
 	_data = NULL; // The buoy has been treated...
 
 	// Sounds entering the new room...
@@ -764,7 +761,7 @@ void* AticAtacWorld::ToFallBuoy::treatFor (QGAMES::Element* e)
 	((AticAtacGameStateFalling*) QGAMES::Game::game () -> activeState ()) -> 
 		setPlayerPosition (_data -> _position); 
 	// Those things can be set before changing the room, as the state starts falling...
-	delete _data;
+	delete (_data);
 	_data = NULL; // The buoy has been treated...
 
 	return (this);
@@ -776,7 +773,7 @@ void* AticAtacWorld::ToFinishBuoy::treatFor (QGAMES::Element* e)
 	assert (e);
 	((AticAtacGame*) QGAMES::Game::game ()) -> setRoomNumber (_data -> _roomNumber); // usually the outthere room...
 	QGAMES::Game::game () -> setState (std::string (__GAMESTATEWINNAME));
-	delete _data;
+	delete (_data);
 	_data = NULL; // The buoy has been treated...
 	return (this);
 }

@@ -1,7 +1,5 @@
 #include "Entities.hpp"
 #include "Movements.hpp"
-#include <Arcade/arcadegame.hpp>
-#include <iostream>
 
 // ---
 void AticAtacThingToCatch::setAspectTo (const General::ThingDefinition& df)
@@ -12,13 +10,13 @@ void AticAtacThingToCatch::setAspectTo (const General::ThingDefinition& df)
 	setCurrentAspect (f._initialFrame); // Only one frame...
 	setPosition (df._position + f._adjust ); 
 
-	_isVisible = true; 
+	setVisible (true); 
 }
 
 // ---
 void AticAtacThingToCatch::updatePositions ()
 {
-	if (!_isVisible)
+	if (!isVisible ())
 		return; // Only when it is visible...
 
 	QGAMES::Artist::updatePositions ();
@@ -27,9 +25,6 @@ void AticAtacThingToCatch::updatePositions ()
 // ---
 void AticAtacThingToCatch::drawOn (QGAMES::Screen* s, const QGAMES::Position& p)
 {
-	if (!_isVisible)
-		return; // Only when it is visible...
-
 	QGAMES::Artist::drawOn (s, p);
 
 	// Just to debug the limits are drawn

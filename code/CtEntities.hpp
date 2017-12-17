@@ -4,11 +4,9 @@
 #ifndef __CTENTITIES_HPP__
 #define __CTENTITIES_HPP__
 
-#include <Common/entity.hpp>
-#include <Common/rectangle.hpp>
-#include <Arcade/artist.hpp>
 #include "General.hpp"
 #include "Defs.hpp"
+#include <Arcade/arcadeinclude.hpp>
 
 /** This class represents an atic atac thing that can be caught. */
 class AticAtacThingToCatch : public QGAMES::Artist
@@ -18,9 +16,8 @@ class AticAtacThingToCatch : public QGAMES::Artist
 	AticAtacThingToCatch (int id, const QGAMES::Forms& f = QGAMES::Forms (), 
 		const QGAMES::Entity::Data& d = QGAMES::Entity::Data ()) 
 			: QGAMES::Artist (id, f, d),
-			  _dObjDefinition (),
-			  _isVisible (false)
-							{ /** Nothing else to do . */ }
+			  _dObjDefinition ()
+							{ setVisible (false); }
 
 	virtual Entity* clone ()
 							{ return (new AticAtacMonster (_id, _forms, _data)); }
@@ -34,17 +31,6 @@ class AticAtacThingToCatch : public QGAMES::Artist
 	General::WhatIs whatIs () const
 							{ return (_dObjDefinition._whatIs); }
 
-
-	/** To know whether the background object is or not visible now. */
-	bool isVisible () const
-							{ return (_isVisible); }
-	/** To activate or desactivate if the thing object is visible. 
-		In a room (scene) there would be different things (up to a maximum of 3).
-		The things in the scene always will be the "same" entities.
-		Their aspects and positions will change accorging to the room the player is in. */
-	void setVisible (bool v)
-							{ _isVisible = v; }
-
 	/** The position is updated, moving between the initial and the final frame. */
 	virtual void updatePositions ();
 	/** The thing is only drawn when it is visible. */
@@ -53,8 +39,6 @@ class AticAtacThingToCatch : public QGAMES::Artist
 	private:
 	/** What the thing is. */
 	General::ThingDefinition _dObjDefinition;
-	/** To determinate whether the thing is or not visible. */
-	bool _isVisible;
 };
 
 #endif

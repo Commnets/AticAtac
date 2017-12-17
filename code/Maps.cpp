@@ -1,8 +1,6 @@
 #include "Maps.hpp"
 #include "General.hpp"
 #include "Defs.hpp"
-#include <Common/game.hpp>
-#include <Common/screen.hpp>
 
 // ---
 void AticAtacMap::setRoomNumber (int r)

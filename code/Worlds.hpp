@@ -4,11 +4,10 @@
 #ifndef __WORLDS_HPP__
 #define __WORLDS_HPP__
 
-#include <Arcade/world.hpp>
 #include "Entities.hpp"
 #include "Defs.hpp"
 #include "Events.hpp"
-#include <map>
+#include <Arcade/arcadeinclude.hpp>
 
 /** This class represents the world where the play is happening. */
 class AticAtacWorld : public QGAMES::World

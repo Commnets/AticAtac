@@ -1,8 +1,6 @@
 #include "Entities.hpp"
 #include "Movements.hpp"
 #include "Game.hpp"
-#include <Arcade/arcadegame.hpp>
-#include <iostream>
 
 // ---
 void AticAtacMonster::Behaviour::changeDirectionConsideringLimits (QGAMES::bdata& x, QGAMES::bdata& y, 
@@ -28,7 +26,6 @@ void AticAtacMonster::Behaviour::changeDirectionConsideringLimits (QGAMES::bdata
 // ---
 AticAtacMonster::AticAtacMonster (int id, const QGAMES::Forms& f, const QGAMES::Entity::Data& d) 
 	: QGAMES::Artist (id, f, d),
-	  _isVisible (false),
 	  _status (Status::__APPEARING),
 	  _behaviour (NULL),
 	  _mtDefinition (),
@@ -37,7 +34,8 @@ AticAtacMonster::AticAtacMonster (int id, const QGAMES::Forms& f, const QGAMES::
 	  _counter (0),
 	  _counterChanges (0)
 { 
-	/** Nothing else to do */ 
+	// Invisible by default...
+	setVisible (false);
 }
 
 // ---
@@ -76,7 +74,7 @@ void AticAtacMonster::setAspectTo (const General::ThingDefinition& df,
 	// Start to move or not...
 
 	// Setting up the aspect becomes the monster visible...
-	_isVisible = true; 
+	setVisible (true); 
 }
 
 // ---
@@ -135,13 +133,13 @@ void AticAtacMonster::initialize ()
 	// No behaviour by default...
 	_behaviour = NULL;
 
-	_isVisible = false;
+	setVisible (false);
 }
 
 // ---
 void AticAtacMonster::updatePositions ()
 {
-	if (!_isVisible)
+	if (!isVisible ())
 		return; // Only when visible...
 
 	// Correct the speed 
@@ -187,9 +185,6 @@ void AticAtacMonster::updatePositions ()
 // ---
 void AticAtacMonster::drawOn (QGAMES::Screen* s, const QGAMES::Position& p)
 {
-	if (!_isVisible)
-		return; // Only when visible...
-
 	QGAMES::Artist::drawOn (s, p);
 
 	#ifndef NDEBUG

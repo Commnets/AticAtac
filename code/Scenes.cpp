@@ -6,7 +6,7 @@
 #include "General.hpp"
 
 // ---
-AticAtacScene::AticAtacScene (const QGAMES::Maps& m, const QGAMES::Scenes& cn,
+AticAtacScene::AticAtacScene (const QGAMES::Maps& m, const QGAMES::Scene::Connections& cn,
 		const QGAMES::SceneProperties& p, const QGAMES::EntitiesPerLayer& ePL)
 	: QGAMES::Scene (__ATICATACSCENE, m, cn, p, ePL),
 	  _roomNumber (0),

@@ -4,10 +4,10 @@
 #ifndef __SCENES_HPP__
 #define __SCENES_HPP__
 
-#include <Arcade/scene.hpp>
 #include "Worlds.hpp"
 #include "Entities.hpp"
 #include "Defs.hpp"
+#include <Arcade/arcadeinclude.hpp>
 
 /** The class describing the scene where the game happens. */
 class AticAtacScene : public QGAMES::Scene
@@ -18,7 +18,7 @@ class AticAtacScene : public QGAMES::Scene
 		During the game there will be only one instance of this class. 
 		The scene during the initializacion, creates the behaviours
 		that the monsters will have. */
-	AticAtacScene (const QGAMES::Maps& m, const QGAMES::Scenes& cn,
+	AticAtacScene (const QGAMES::Maps& m, const QGAMES::Scene::Connections& cn,
 		const QGAMES::SceneProperties& p = QGAMES::SceneProperties (),
 		const QGAMES::EntitiesPerLayer& ePL = QGAMES::EntitiesPerLayer ());
 	/** To delete the monster's behaviours. */

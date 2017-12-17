@@ -1,6 +1,4 @@
 #include "ScObjects.hpp"
-#include <Common/game.hpp>
-#include <sstream>
 
 // ---
 AticAtacChicken::AticAtacChicken ()

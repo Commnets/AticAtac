@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Game.hpp"
-#include <Common/resourcesreader.hpp>
 
 #ifndef _CONSOLE
 #include <SDL.h>

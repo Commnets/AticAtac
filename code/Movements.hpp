@@ -4,10 +4,8 @@
 #ifndef __MOVEMENTS_HPP__
 #define __MOVEMENTS_HPP__
 
-#include <Common/movement.hpp>
-#include <Common/rectangle.hpp>
-#include <Arcade/layer.hpp>
 #include "Defs.hpp"
+#include <Arcade/arcadeinclude.hpp>
 
 /** Class to move an entity in the room. */
 class MovementEntityInRoom : public QGAMES::MovementOneByOne

@@ -75,7 +75,7 @@ void AticAtacGameStateLoading::drawOn (QGAMES::Screen* s)
 // ---
 void AticAtacGameStateLoading::onExit ()
 {
-	delete _text;
+	delete (_text);
 }
 
 // ---
@@ -219,7 +219,7 @@ void AticAtacGameStateSelect::optionSelected ()
 		if (++_currentOptionLevel >= __MAXNUMBEROFLEVELS)
 			_currentOptionLevel = 0;
 		_options [5] = _optionLevels [_currentOptionLevel];
-		delete _optionGraphics [5];
+		delete (_optionGraphics [5]);
 		_optionGraphics [5] = new AticAtacPresentationText (_options [5]);
 		_optionGraphics [5] -> setSpace (0);
 	}

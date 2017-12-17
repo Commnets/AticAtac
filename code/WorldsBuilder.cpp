@@ -24,7 +24,8 @@ QGAMES::World* WorldsBuilder::createWorldObject (int no, const QGAMES::Scenes& s
 
 // ---
 QGAMES::Scene* WorldsBuilder::createSceneObject (int ns, const QGAMES::Maps& m, 
-	const QGAMES::Scenes& cn, const QGAMES::SceneProperties& p, const QGAMES::EntitiesPerLayer& ePL)
+	const QGAMES::Scene::Connections& cn, const QGAMES::SceneProperties& p, 
+	const QGAMES::EntitiesPerLayer& ePL)
 {
 	QGAMES::Scene* result = NULL;
 	switch (ns)
