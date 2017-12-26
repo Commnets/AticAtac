@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<Sounds>
+	<Sound id="100" type="1" loop="0" file="sounds/ACG.wav"/>
+	<Sound id="101" type="1" loop="0" file="sounds/BOUNCE.wav"/>
+	<Sound id="102" type="1" loop="0" file="sounds/CLOCK 01.wav"/>
+	<Sound id="103" type="1" loop="0" file="sounds/CLOCK 02.wav"/>
+	<Sound id="104" type="1" loop="0" file="sounds/DIE 01.wav"/>
+	<Sound id="105" type="1" loop="0" file="sounds/DIE 02.wav"/>
+	<Sound id="106" type="1" loop="0" file="sounds/DIE 03.wav"/>
+	<Sound id="107" type="1" loop="0" file="sounds/DOOR 01.wav"/>
+	<Sound id="108" type="1" loop="0" file="sounds/DOOR 02.wav"/>
+	<Sound id="109" type="1" loop="0" file="sounds/DOOR 03.wav"/>
+	<Sound id="110" type="1" loop="0" file="sounds/DROP.wav"/>
+	<Sound id="111" type="1" loop="0" file="sounds/ENTER 01.wav"/>
+	<Sound id="112" type="1" loop="0" file="sounds/ENTER 02.wav"/>
+	<Sound id="113" type="1" loop="0" file="sounds/FALL.wav"/>
+	<Sound id="114" type="1" loop="0" file="sounds/FIRE 01.wav"/>
+	<Sound id="115" type="1" loop="0" file="sounds/FIRE 02.wav"/>
+	<Sound id="116" type="1" loop="0" file="sounds/FOOD.wav"/>
+	<Sound id="117" type="1" loop="0" file="sounds/HIT 02.wav"/>
+	<Sound id="118" type="1" loop="0" file="sounds/HIT.wav"/>
+	<Sound id="119" type="1" loop="0" file="sounds/LAND.wav"/>
+	<Sound id="120" type="1" loop="0" file="sounds/HIT.wav"/>
+	<Sound id="121" type="1" loop="0" file="sounds/MONSTER 01.wav"/>
+	<Sound id="122" type="1" loop="0" file="sounds/MONSTER 02.wav"/>
+	<Sound id="123" type="1" loop="0" file="sounds/MONSTER 03.wav"/>
+	<Sound id="124" type="1" loop="0" file="sounds/MONSTER 04.wav"/>
+	<Sound id="125" type="1" loop="0" file="sounds/MONSTER 05.wav"/>
+	<Sound id="126" type="1" loop="0" file="sounds/PICK.wav"/>
+	<Sound id="127" type="1" loop="0" file="sounds/SPARK.wav"/>
+	<Sound id="128" type="1" loop="0" file="sounds/START.wav"/>
+	<Sound id="129" type="1" loop="0" file="sounds/START2.wav"/>
+	<Sound id="130" type="1" loop="-1" file="sounds/TITLE A8.wav"/>
+	<Sound id="131" type="1" loop="-1" file="sounds/TITLE BU.wav"/>
+	<Sound id="132" type="1" loop="-1" file="sounds/TITLE CR.wav"/>
+	<Sound id="133" type="1" loop="-1" file="sounds/TITLE GF.wav"/>
+	<Sound id="134" type="1" loop="-1" file="sounds/TITLE KL.wav"/>
+	<Sound id="135" type="1" loop="-1" file="sounds/TITLE NS.wav"/>
+	<Sound id="136" type="1" loop="-1" file="sounds/TITLE PG.wav"/>
+	<Sound id="137" type="1" loop="-1" file="sounds/TITLE SW.wav"/>
+	<Sound id="138" type="1" loop="-1" file="sounds/WALK 01.wav"/>
+	<Sound id="139" type="1" loop="-1" file="sounds/WALK.wav"/>
+	<Sound id="140" type="1" loop="-1" file="sounds/OPENEXITDOOR.wav"/>
+	<Sound id="141" type="1" loop="-1" file="sounds/CLOSEEXITDOOR.wav"/>
+</Sounds>

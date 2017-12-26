@@ -302,7 +302,7 @@ void AticAtacGameStateSelect::onEnter ()
 	_positionOption = 0;
 	// Type of control selected: Keyboard or Joystick?
 	// First time it will be keyboard, but after first game who knows?
-	_typeOfControl = ((InputHandler*) _game -> inputHandler ()) -> isJoystickActive () ? 1 : 0; 
+	_typeOfControl = ((InputHandler*) _game -> inputHandler () -> behaviour ()) -> isJoystickActive () ? 1 : 0; 
 	// Type of player selected
 	_typePlayer = AticAtacCharacter::Type::__KNIGHT;
 	// Blinking attribute

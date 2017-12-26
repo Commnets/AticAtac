@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<Worlds>
+	<World id="1">
+		<Scenes>
+			<Scene id="11"> 
+				<Attributes>
+				</Attributes>
+				<Conexions>
+				</Conexions>
+				<Maps>
+					<Map id="111" file="maps/Map.xml"/>
+				</Maps>
+				<Entities>
+				</Entities>
+			</Scene>
+		</Scenes>
+		<Attributes>
+		</Attributes>
+	</World>
+</Worlds>

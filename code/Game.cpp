@@ -134,7 +134,7 @@ void AticAtacGame::setLevel (int l)
 void AticAtacGame::setJoystick (bool j)
 {
 	assert (_inputHandler);
-	((InputHandler*) _inputHandler) -> activateJoystick (j);
+	((InputHandler*) _inputHandler -> behaviour ()) -> activateJoystick (j);
 }
 
 // ---
