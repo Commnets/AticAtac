@@ -53,12 +53,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\CPPLIBS\SDL2-2.0.0\include;..\..\..\CPPLIBS\SDL2_image-2.0.0\include;..\..\..\CPPLIBS\SDL2_mixer-2.0.0\include;..\..\..\CPPLIBS\SDL2_gfx-1.0.1;..\..\projects\tinyxml;..\..\projects\tmxparser;..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SDL_HOME)\include;$(SDLIMAGE_HOME)\include;$(SDLMIXER_HOME)\include;$(SDLGFX_HOME);..\..\projects\tinyxml;..\..\projects\tmxparser;..\..\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;__QGAMES_SDLLIBRARY__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\lib;..\..\..\CPPLIBS\SDL2-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_image-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_mixer-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_gfx-1.0.1\Win32\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\lib;$(SDL_HOME)\lib\x86;$(SDLIMAGE_HOME)\lib\x86;$(SDLMIXER_HOME)\lib\x86;$(SDLGFX_HOME)\Win32\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>ArcadeLibD.lib;CommonlibD.lib;CommonSDLD.lib;tinyxmlD.lib;SDL2.lib;SDL2_image.lib;SDL2_mixer.lib;TmxParserD.lib;SDL2_gfx.lib;zpplibD.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -70,14 +70,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\CPPLIBS\SDL2-2.0.0\include;..\..\..\CPPLIBS\SDL2_image-2.0.0\include;..\..\..\CPPLIBS\SDL2_mixer-2.0.0\include;..\..\..\CPPLIBS\SDL2_gfx-1.0.1;..\..\projects\tinyxml;..\..\projects\tmxparser;..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SDL_HOME)\include;$(SDLIMAGE_HOME)\include;$(SDLMIXER_HOME)\include;$(SDLGFX_HOME);..\..\projects\tinyxml;..\..\projects\tmxparser;..\..\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;__QGAMES_SDLLIBRARY__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>..\..\lib;..\..\..\CPPLIBS\SDL2-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_image-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_mixer-2.0.0\lib\x86;..\..\..\CPPLIBS\SDL2_gfx-1.0.1\Win32\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\lib;$(SDL_HOME)\lib\x86;$(SDLIMAGE_HOME)\lib\x86;$(SDLMIXER_HOME)\lib\x86;$(SDLGFX_HOME)\Win32\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Commonlib.lib;ArcadeLib.lib;CommonSDL.lib;tinyxml.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;TmxParser.lib;SDL2_mixer.lib;SDL2_gfx.lib;zpplib.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
