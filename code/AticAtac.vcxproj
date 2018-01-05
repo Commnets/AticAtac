@@ -53,13 +53,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SDL_HOME)\include;$(SDLIMAGE_HOME)\include;$(SDLMIXER_HOME)\include;$(SDLGFX_HOME);..\..\projects\tinyxml;..\..\projects\tmxparser;..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SDL_HOME)\include;$(SDLIMAGE_HOME)\include;$(SDLMIXER_HOME)\include;$(SDLGFX_HOME);$(SDLTTF_HOME)\include;..\..\projects\tinyxml;..\..\projects\tmxparser;..\..\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;__QGAMES_SDLLIBRARY__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\lib;$(SDL_HOME)\lib\x86;$(SDLIMAGE_HOME)\lib\x86;$(SDLMIXER_HOME)\lib\x86;$(SDLGFX_HOME)\Win32\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ArcadeLibD.lib;CommonlibD.lib;CommonSDLD.lib;tinyxmlD.lib;SDL2.lib;SDL2_image.lib;SDL2_mixer.lib;TmxParserD.lib;SDL2_gfx.lib;zpplibD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\lib;$(SDL_HOME)\lib\x86;$(SDLIMAGE_HOME)\lib\x86;$(SDLMIXER_HOME)\lib\x86;$(SDLGFX_HOME)\Win32\Debug;$(SDLTTF_HOME)\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ArcadeLibD.lib;CommonlibD.lib;CommonSDLD.lib;tinyxmlD.lib;SDL2.lib;SDL2_image.lib;SDL2_mixer.lib;TmxParserD.lib;SDL2_gfx.lib;zpplibD.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -70,15 +70,15 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SDL_HOME)\include;$(SDLIMAGE_HOME)\include;$(SDLMIXER_HOME)\include;$(SDLGFX_HOME);..\..\projects\tinyxml;..\..\projects\tmxparser;..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SDL_HOME)\include;$(SDLIMAGE_HOME)\include;$(SDLMIXER_HOME)\include;$(SDLGFX_HOME);$(SDLTTF_HOME)\include;..\..\projects\tinyxml;..\..\projects\tmxparser;..\..\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;__QGAMES_SDLLIBRARY__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>..\..\lib;$(SDL_HOME)\lib\x86;$(SDLIMAGE_HOME)\lib\x86;$(SDLMIXER_HOME)\lib\x86;$(SDLGFX_HOME)\Win32\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Commonlib.lib;ArcadeLib.lib;CommonSDL.lib;tinyxml.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;TmxParser.lib;SDL2_mixer.lib;SDL2_gfx.lib;zpplib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\lib;$(SDL_HOME)\lib\x86;$(SDLIMAGE_HOME)\lib\x86;$(SDLMIXER_HOME)\lib\x86;$(SDLGFX_HOME)\Win32\Release;$(SDLTTF_HOME)\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Commonlib.lib;ArcadeLib.lib;CommonSDL.lib;tinyxml.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;TmxParser.lib;SDL2_mixer.lib;SDL2_gfx.lib;zpplib.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
