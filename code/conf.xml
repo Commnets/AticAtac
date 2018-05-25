@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
 <Properties>
 	<Property id="DATADIR" value="D:/Temp"/>
+	<Property id="XSCALE" value="2.5"/>
+	<Property id="YSCALE" value="2.5"/>
 </Properties>
