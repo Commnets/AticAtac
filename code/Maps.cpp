@@ -54,8 +54,6 @@ void AticAtacMap::updatePositions ()
 // ---
 void AticAtacMap::drawOn (QGAMES::Screen* s, const QGAMES::Position& p)
 {
-	QGAMES::ObjectMap::drawOn (s, p);
-
 	General::RoomDefinition room = General::_e._rooms [_roomNumber];
 	General::RoomPicture picture = General::_e._roomTypes [room._type];
 
@@ -75,6 +73,8 @@ void AticAtacMap::drawOn (QGAMES::Screen* s, const QGAMES::Position& p)
 				i != picture.end (); i++)
 			s -> drawLine ((*i)._origin, (*i)._end, room._color);
 	}
+
+	QGAMES::ObjectMap::drawOn (s, p);
 
 	#ifndef NDEBUG
 	// Only in debug mode...
