@@ -79,7 +79,7 @@ class AticAtacMonster : public QGAMES::Artist
 	AticAtacMonster (int id, const QGAMES::Forms& f = QGAMES::Forms (), 
 		const QGAMES::Entity::Data& d = QGAMES::Entity::Data ());
 
-	virtual Entity* clone ()
+	virtual Entity* clone () const
 							{ return (new AticAtacMonster (_id, _forms, _data)); }
 
 	/** To know whether the monster can die or not duw to the weapon. */

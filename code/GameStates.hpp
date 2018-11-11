@@ -15,7 +15,7 @@ class AticAtacPresentationText : public QGAMES::ScoreObjectText
 	public:
 	AticAtacPresentationText (const std::string& t = std::string (__NULL_STRING__));
 
-	virtual Entity* clone ()
+	virtual Entity* clone () const
 							{ return (new AticAtacPresentationText (_text)); }
 
 	protected:

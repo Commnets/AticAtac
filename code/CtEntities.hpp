@@ -19,7 +19,7 @@ class AticAtacThingToCatch : public QGAMES::Artist
 			  _dObjDefinition ()
 							{ setVisible (false); }
 
-	virtual Entity* clone ()
+	virtual Entity* clone () const
 							{ return (new AticAtacMonster (_id, _forms, _data)); }
 
 	/** To set up different forms of the thing to catch. */

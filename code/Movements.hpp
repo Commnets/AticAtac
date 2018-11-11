@@ -52,7 +52,7 @@ class MovementMonsterInRoom : public MovementEntityInRoom
 		: MovementEntityInRoom (id, v)
 							{ }
 
-	virtual Movement* clone ();
+	virtual Movement* clone () const;
 
 	virtual void initialize ();
 };
@@ -66,7 +66,7 @@ class MovementPlayerInRoom : public MovementEntityInRoom
 		: MovementEntityInRoom (id, v)
 							{ }
 
-	virtual Movement* clone ();
+	virtual Movement* clone () const;
 
 	virtual void initialize ();
 };
@@ -80,7 +80,7 @@ class MovementWeaponInRoom : public MovementEntityInRoom
 		: MovementEntityInRoom (id, v)
 							{ }
 
-	virtual Movement* clone ();
+	virtual Movement* clone () const;
 
 	virtual void initialize ();
 };

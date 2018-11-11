@@ -9,7 +9,7 @@ void MovementEntityInRoom::moveOne (const QGAMES::Vector& d, const QGAMES::Vecto
 }
 
 // ---
-QGAMES::Movement* MovementMonsterInRoom::clone ()
+QGAMES::Movement* MovementMonsterInRoom::clone () const
 {
 	QGAMES::Movement* result = new MovementMonsterInRoom (_id, _variables); 
 	result -> initialize (); 
@@ -29,7 +29,7 @@ void MovementMonsterInRoom::initialize ()
 }
 
 // ---
-QGAMES::Movement* MovementPlayerInRoom::clone ()
+QGAMES::Movement* MovementPlayerInRoom::clone () const
 {
 	QGAMES::Movement* result = new MovementPlayerInRoom (_id, _variables); 
 	result -> initialize (); 
@@ -46,7 +46,7 @@ void MovementPlayerInRoom::initialize ()
 }
 
 // ---
-QGAMES::Movement* MovementWeaponInRoom::clone ()
+QGAMES::Movement* MovementWeaponInRoom::clone () const
 {
 	QGAMES::Movement* result = new MovementWeaponInRoom (_id, _variables); 
 	result -> initialize (); 

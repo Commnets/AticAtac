@@ -16,7 +16,7 @@ class AticAtacChicken : public QGAMES::ScoreObject
 	// Constructors
 	AticAtacChicken ();
 
-	virtual Entity* clone ()
+	virtual Entity* clone () const
 							{ return (new AticAtacChicken ()); }
 
 	/** To set the % of the chicken visible. */
@@ -47,7 +47,7 @@ class AticAtacScoreFrame : public QGAMES::ScoreObject
 	// Constructors
 	AticAtacScoreFrame ();
 
-	virtual Entity* clone ()
+	virtual Entity* clone () const
 							{ return (new AticAtacScoreFrame ()); }
 
 	/** To change the color. */
@@ -73,7 +73,7 @@ class AticAtacLives : public QGAMES::ScoreObject
 	// Constructors
 	AticAtacLives ();
 
-	virtual Entity* clone ()
+	virtual Entity* clone () const
 							{ return (new AticAtacLives ()); }
 
 	/** To set the number of lives. */
@@ -109,7 +109,7 @@ class AticAtacThings : public QGAMES::ScoreObject
 	// Constructors
 	AticAtacThings ();
 
-	virtual Entity* clone ()
+	virtual Entity* clone () const
 							{ return (new AticAtacThings ()); }
 
 	/** To set the things. */
@@ -146,7 +146,7 @@ class AticAtacTimeCounter : public QGAMES::ScoreObjectText
 		This entity is not created so far from an entity builder. */
 	AticAtacTimeCounter ();
 
-	virtual Entity* clone ()
+	virtual Entity* clone () const
 							{ return (new AticAtacTimeCounter ()); }
 
 	/** To convert a time passed as parameter in seconds,
@@ -170,7 +170,7 @@ class AticAtacScoreCounter : public QGAMES::ScoreObjectNumber
 		This entity is not created so far from an entity builder. */
 	AticAtacScoreCounter ();
 
-	virtual Entity* clone ()
+	virtual Entity* clone () const
 							{ return (new AticAtacScoreCounter ()); }
 
 	protected:

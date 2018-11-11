@@ -20,7 +20,7 @@ class AticAtacCharacter : public QGAMES::Artist
 	AticAtacCharacter (int id, const QGAMES::Forms& f = QGAMES::Forms (), 
 		const QGAMES::Entity::Data& d = QGAMES::Entity::Data ()); 
 
-	virtual Entity* clone ()
+	virtual Entity* clone () const
 							{ return (new AticAtacCharacter (_id, _forms, _data)); }
 	/** To determinate whether the player can or not move.
 		This method is used by the movement classes.
@@ -111,7 +111,7 @@ class AticAtacWeapon : public QGAMES::Artist
 			  _lastOrientation (QGAMES::Vector::_cero)
 							{ setVisible (true); }
 
-	virtual Entity* clone ()
+	virtual Entity* clone () const
 							{ return (new AticAtacWeapon (_id, _forms, _data)); }
 
 	/** To set and to know the type. */

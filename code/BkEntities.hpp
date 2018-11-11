@@ -28,7 +28,7 @@ class AticAtacBackgroundEntity : public QGAMES::Artist
 			  _canOpenClose (true)
 							{ setVisible (false); }
 
-	virtual Entity* clone ()
+	virtual Entity* clone () const
 							{ return (new AticAtacBackgroundEntity (_id, _forms, _data)); }
 
 	/** To know the zone of influence. */

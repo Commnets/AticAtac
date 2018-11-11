@@ -20,7 +20,7 @@ class AticAtacFood : public QGAMES::Artist
 			  _dObjDefinition ()
 							{ setVisible (false); }
 
-	virtual Entity* clone ()
+	virtual Entity* clone () const
 							{ return (new AticAtacMonster (_id, _forms, _data)); }
 
 	/** To set up the final aspect of the food. */
