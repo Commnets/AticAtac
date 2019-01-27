@@ -8,6 +8,9 @@
 #else
 #define C_LINKAGE
 #endif /* __cplusplus */
+#if _MSC_VER >= 1900
+extern C_LINKAGE FILE __iob_func[3] = { *stdin,*stdout,*stderr };
+#endif
 extern C_LINKAGE int main (int argc, char *argv [])
 #else
 int _tmain (int argc, char *argv [])
