@@ -69,7 +69,7 @@ void AticAtacGameStateLoading::drawOn (QGAMES::Screen* s)
 	// Write down the text, next to the logo...
 	_text -> setAlphaLevel (_counterAlpha);
 	_text -> drawOn (s, lPos + QGAMES::Position (__BD (_logo -> frameWidth () + 10), 
-		__BD ((_logo -> frameHeight () - _text -> height ()) / 2), __BD 0));
+		__BD ((_logo -> frameHeight () - _text -> visualHeight ()) / 2), __BD 0));
 }
 
 // ---
