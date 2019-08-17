@@ -8,11 +8,11 @@
 #include "InputHandler.hpp"
 #include "Defs.hpp"
 #include "Events.hpp"
-#include <graphicsinclude.hpp>
+#include <SDL/sdlgame.hpp>
 
 // ---
 AticAtacGame::AticAtacGame ()
-	: QGAMES::ArcadeGame (new __QGAMESGRAPHICSLIBRARY_IMPLEMENTATIONCLASS__ (), QGAMES::Worlds ()),
+	: QGAMES::ArcadeGame (new SDLGame (false /** No FMOD. */), QGAMES::Worlds ()),
 	  _levels (),
 	  _level (0), // The level by default...
 	  _scoreFrame (NULL), _chicken (NULL), _lives (NULL), _things (NULL),
