@@ -153,7 +153,7 @@
 
 	<!-- The letters -->
 	<Form id="508" name="Letters" file="forms/Letters3.png" width="512" height="512" 
-            fSpacing="0" fMargin="0" fWidth="32" fHeight="32" aColor="255" nFrames="256">
+            fSpacing="0" fMargin="0" fWidth="32" fHeight="32" aColor="255" nFrames="224">
 		<Frame id="0" width="7"/>
 		<Frame id="1" width="11"/>
 		<Frame id="2" width="11"/>
