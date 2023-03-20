@@ -14,19 +14,19 @@
     <ProjectGuid>{C90ECB4F-A3FB-4BF2-93E6-E6D92F7ADB22}</ProjectGuid>
     <RootNamespace>AticAtac</RootNamespace>
     <ProjectName>AticAtac</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -107,6 +107,7 @@
     <ClInclude Include="MtEntities.hpp" />
     <ClInclude Include="OriginalData.hpp" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
     <ClInclude Include="Scenes.hpp" />
     <ClInclude Include="ScObjects.hpp" />
     <ClInclude Include="stdafx.h" />
@@ -151,10 +152,10 @@
     <None Include="classes.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="AticAtac.rc" />
+    <Image Include="Knight.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Knight.ico" />
+    <ResourceCompile Include="AticAtac.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
